@@ -1,6 +1,6 @@
 <?php
 
-	$pageTitle = 'User Register';
+	$pageTitle = 'Doctor Register';
 	include 'init.php';
 ?>
 <!-- Start login-register -->
