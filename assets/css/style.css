@@ -1,0 +1,308 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  text-transform: uppercase;
+  margin: 0 auto 80px;
+  border-bottom: 2px double black;
+  padding: 10px 20px;
+  font-size: 30px;
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+}
+
+
+.header {
+  background-color: white;
+  z-index:1000;
+  width: 100%;  
+  border-bottom: 2px solid rgba(182, 180, 180, 0.5);;
+}
+.header .container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.header .container.reverse {
+    flex-direction: row-reverse;
+    border-bottom : 2px solid rgba(182, 180, 180, 0.5);
+}
+
+.header .logo {
+  color: #2196f3;
+  font-size: 26px;
+  font-weight: bold;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .menu {
+  display: flex;
+}
+
+.header .no-reverse .menu {
+  margin-left: 60px;
+}
+
+
+.header .menu > li > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  position: relative;
+  color: black;
+  padding: 0 30px;
+  overflow: hidden;
+  font-size: 18px;
+}
+
+
+.header .menu > li > a:hover {
+  color: #2196f3;
+  background-color: #fafafa;
+}
+
+
+
+.landing {
+  position: relative;
+  padding-top:50px;
+}
+
+
+
+.landing .container {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 120px;
+}
+
+.landing .text ,.landing .image {
+  width: 50%;
+}
+
+
+.landing .text p {
+  font-size: 23px;
+  line-height: 1.7;
+  margin: 5px 0 0;
+  color: #666;
+  max-width: 500px;
+}
+
+.landing .image img {
+  position: relative;
+  width: 100%;
+}
+
+
+
+
+.login-register {
+  display: flex;
+  justify-content: center;
+  padding-top:50px;
+  background-color: whitesmoke;
+  min-height: 480px;
+
+}
+
+
+
+.login-register .form {
+  display: flex;
+  width: 750px;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+
+.login-register .form .input {
+  display: inline-flex;
+  width: 370px;
+  margin-bottom: 25px;
+  padding: 15px;
+  border: none;
+  background-color: white;
+  color: #191919;
+}
+
+
+.login-register .form textarea.input {
+  resize: vertical;
+  height: 200px;
+}
+
+
+.login-register span {
+  display: flex;
+  padding-bottom: 20px;
+}
+.login-register span a {
+  padding-left: 10px;
+}
+
+.login-register .form .button {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background-color: #333536;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.login-register .form .button:hover {
+  background-color: #2196f3;
+}
+
+.login-register .content {
+  text-align: center;
+  padding: 0 20px;
+  width: 400px;
+
+}
+.login-register .content h2 {
+  font-size: 40px;
+  padding-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+.cards {
+  padding-top: 100px;
+  position: relative;
+}
+
+.cards .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.cards .box {
+  margin-bottom: 20px;
+  background-color: ghostwhite;
+  width: 30%;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.cards .box img {
+  width: 100%;
+  height: 286px;
+  max-width: 100%;
+}
+.cards .box .content {
+  padding: 20px;
+}
+.cards .box .content h3 {
+  margin: 0;
+}
+.cards .box .content p {
+  margin: 10px 0 0;
+  line-height: 1.5;
+  color: #777;
+}
+.cards .box .info {
+  padding: 20px;
+  border-top: 1px solid #e6e6e7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cards .box .info a {
+  color: #2196f3;
+  font-weight: bold;
+  text-decoration: none;
+
+}
+
+
+.product {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  position: relative;
+}
+.product .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.product .box {
+  margin-bottom: 20px;
+  width: 30%;
+  padding: 15px;
+  background-color: ghostwhite;
+}
+
+.product .box .image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product .box img {
+  width: 100%;
+  height:286px;
+}
+
+
+
+.product .box a {
+  display: block;
+  border: 3px solid black;
+  width: fit-content;
+  margin: 30px auto 30px;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 10px 30px;
+  border-radius: 6px;
+  color: black;
+  text-decoration: none;
+
+}
+
+.product .box a:hover {
+  background-color: #2196f3;
+  color:white;
+}
+
+.footer {
+  background-color: #191919;
+}
+
+.footer .copyright {
+  padding: 25px 0;
+  text-align: center;
+  color: white;
+  margin : 0;
+  border-top: 1px solid #444;
+}
+
+
+
+
