@@ -1,5 +1,5 @@
 <?php
-    ob_start();
+   // ob_start();
     session_start();
     include('init.php');
     $pageTitle = "Home";
@@ -106,5 +106,5 @@
       </div>
 <?php
     include($inc.'footer.php');
-    ob_end_flush();
+    //ob_end_flush();
 

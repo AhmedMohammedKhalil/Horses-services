@@ -9,7 +9,7 @@
     <div class="header" id="header">
       <div class="container reverse">
         <ul class="menu">
-          <?php if(!isset($_SESSION['userName'])) { ?>
+          <?php if(!isset($_SESSION['username'])) { ?>
             <li>
               <a href="<?php  echo $cont."Controller.php?do=showuserLogin" ?>">User Login</a>
             </li>
@@ -34,10 +34,10 @@
           <?php  } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "user") { 
           ?>
           <li>
-                <a href="<?php   ?>">userName</a>
+                <a href="<?php  echo $cont."Controller.php?do=showUserProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
-              <a href="<?php   ?>">Logout</a>
+              <a href="<?php echo $cont."Controller.php?do=userLogout"   ?>">Logout</a>
             </li>
           <?php  } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "trainer") { 
           ?>  
