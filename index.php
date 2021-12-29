@@ -5,9 +5,13 @@
     $pageTitle = "Home";
     include($inc.'header.php');
     include($inc.'landing.php');
+    //var_dump($_SESSION['trainer']);
+    exit();
 ?>
+
       <div class="cards" id="doctors">
         <h2 class="title">Doctors</h2>
+        
         <div class="container">
           <div class="box">
             <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />

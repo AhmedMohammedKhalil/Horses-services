@@ -1,5 +1,5 @@
 <?php
-include '../models/User.php';
+include_once ('../models/User.php');
 class UserController {
 
     
@@ -11,12 +11,13 @@ class UserController {
         header('Location: '.$userroute.'register.php');
     }
 
-    public function login($userroute = '../user/') {
+    public function login($userroute = '../user/') 
+    {
         $error=[];
         if($_SERVER['REQUEST_METHOD'] == 'POST') { 
             if(isset($_POST['login'])) {
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+                $email = trim($_POST['email']);
+                $password = trim($_POST['password']);
                 $data = [$email,$password];
                $encoded= json_encode(['email'=>$email]);
                 if(strlen($password)<8){
@@ -47,8 +48,8 @@ class UserController {
         $error=[];
         if($_SERVER['REQUEST_METHOD'] == 'POST') { 
             if(isset($_POST['register'])) {
-                $name=$_POST['name'];
-                $email = $_POST['email'];
+                $name=trim($_POST['name']);
+                $email = trim($_POST['email']);
                 $password = $_POST['password'];
                 $confirm_password = $_POST['confirm_password'];
                 $encoded= json_encode(['email'=>$email ,'name'=>$name]);
@@ -58,7 +59,7 @@ class UserController {
                     exit();
                 } 
                 if ($password!=$confirm_password) {
-                    $error=json_encode(['password_error'=>"this email exist"]);
+                    $error=json_encode(['password_error'=>"passwords not match"]);
                     header("location: ../user/register.php?error={$error}&data={$encoded} " );
                     exit();
                 } 

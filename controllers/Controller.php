@@ -26,16 +26,37 @@ if($action != "") {
         $user = new UserController();
         $user->register();
     }
-    //doctor routes
+    //doctor routes  doctorLogin
     if($action == 'showdoctorLogin') {
         DoctorController::show_login();
     } 
     if($action == 'showdoctorRegister') {
         DoctorController::show_register();
     }
+
+    if($action == 'doctorLogin') {
+        $user = new DoctorController();
+        $user->login();
+    }
+    if($action == 'doctorLogout') {
+        $user = new DoctorController();
+        $user->logout();
+    }
+    if($action == 'doctorRegister') {
+        $user = new DoctorController();
+        $user->register();
+    }
     //admin routes
     if($action == 'showadminLogin') {
         AdminController::show_login();
+    }
+    if($action == 'adminLogin') {
+        $trainer = new AdminController();
+        $trainer->login();
+    }
+    if($action == 'adminLogout') {
+        $admin = new AdminController();
+        $admin->logout();
     }
 
     //trainer routes
@@ -45,6 +66,17 @@ if($action != "") {
     if($action == 'showtrainerRegister') {
         TrainerController::show_register();
     }
-    
+    if($action == 'trainerLogin') {
+        $trainer = new TrainerController();
+        $trainer->login();
+    }
+    if($action == 'trainerLogout') {
+        $trainer = new TrainerController();
+        $trainer->logout();
+    }
+    if($action == 'trainerRegister') {
+        $trainer = new TrainerController();
+        $trainer->register();
+    }
     
 }

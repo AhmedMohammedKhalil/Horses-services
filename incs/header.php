@@ -26,14 +26,14 @@
             if(isset($_SESSION['type']) && $_SESSION['type'] == "admin") {
           ?>
             <li>
-                <a href="<?php   ?>">adminName</a>
+                <a href="<?php  echo $cont."Controller.php?do=showAdminProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
-              <a href="<?php   ?>">Logout</a>
+              <a href="<?php echo $cont."Controller.php?do=adminLogout"   ?>">Logout</a>
             </li>
           <?php  } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "user") { 
           ?>
-          <li>
+            <li>
                 <a href="<?php  echo $cont."Controller.php?do=showUserProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
@@ -41,20 +41,20 @@
             </li>
           <?php  } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "trainer") { 
           ?>  
-          <li>
-                <a href="<?php   ?>">trainerName</a>
+            <li>
+                <a href="<?php  echo $cont."Controller.php?do=showTrainerProfile"  ?>"><?php echo $_SESSION['username']  ?></a>
             </li>
             <li>
-              <a href="<?php   ?>">Logout</a>
+              <a href="<?php echo $cont."Controller.php?do=trainerLogout"   ?>">Logout</a>
             </li>
           <?php } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "doctor") { 
           ?>  
-          <li>
-                <a href="<?php   ?>">doctorName</a>
+            <li>
+                <a href="<?php  echo $cont."Controller.php?do=showDoctorProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
-              <a href="<?php   ?>">Logout</a>
-            </li> 
+              <a href="<?php echo $cont."Controller.php?do=doctorLogout"   ?>">Logout</a>
+            </li>
           <?php } }?>
         </ul>
       </div>
