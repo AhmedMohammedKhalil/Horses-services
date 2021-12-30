@@ -2,10 +2,15 @@
     ob_start();
     session_start();
     include('init.php');
-    $pageTitle = "Home";
+    $pageTitle = "search";
     include($inc.'header.php');
-    include($inc.'landing.php');
-?>
+?>    
+    <div class="search">
+        <form action="">
+            <input type="search" placeholder="Searching ...." />
+            <input type="submit" value="Search" />
+        </form>
+    </div>
       <div class="cards" id="doctors">
         <h2 class="title">Doctors</h2>
         

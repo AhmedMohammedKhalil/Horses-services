@@ -55,16 +55,18 @@
             <li>
               <a href="<?php echo $cont."Controller.php?do=doctorLogout"   ?>">Logout</a>
             </li>
-          <?php } }?>
+          <?php }}?>
         </ul>
       </div>
       <div class="container no-reverse">
         <a href="/Horses-services/" class="logo">Horses Services</a>
         <ul class="menu">
           <li><a href="/Horses-services/">Home</a></li>
-          <li><a href="#doctors">Doctors</a></li>
-          <li><a href="#trainers">Trainers</a></li>
-          <li><a href="#products">Products</a></li>
+          <li><a href="/Horses-services/#doctors">Doctors</a></li>
+          <li><a href="/Horses-services/#trainers">Trainers</a></li>
+          <li><a href="/Horses-services/#products">Products</a></li>
+          <li><a href="/Horses-services/search.php">search</a></li>
+
         </ul>
       </div>
     </div>
