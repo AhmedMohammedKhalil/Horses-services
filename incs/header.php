@@ -59,9 +59,9 @@
         </ul>
       </div>
       <div class="container no-reverse">
-        <a href="/Horses-services-mvc/" class="logo">Horses Services</a>
+        <a href="/Horses-services/" class="logo">Horses Services</a>
         <ul class="menu">
-          <li><a href="/Horses-services-mvc/">Home</a></li>
+          <li><a href="/Horses-services/">Home</a></li>
           <li><a href="#doctors">Doctors</a></li>
           <li><a href="#trainers">Trainers</a></li>
           <li><a href="#products">Products</a></li>

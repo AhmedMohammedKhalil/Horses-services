@@ -17,9 +17,22 @@ class AdminController {
                 $password = trim($_POST['password']);
                 $data = [$email,$password];
                $encoded= json_encode(['email'=>$email]);
-                if(strlen($password)<8){
+                if (empty($email)) {
+                    $emailError="email required";
+                   
+                } 
+                if (empty($password)) {
+                    $passwordError="password required";
+                } 
+                if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
-                    $error=json_encode(['password_error'=>$passwordError]);
+                } 
+                if(isset($emailError) || isset($passwordError)) 
+                {
+                    $error = json_encode([
+                        'email_error'=> isset($emailError) ? $emailError : '',
+                        'password_error'=>isset($passwordError) ? $passwordError : ''
+                    ]);
                     header('Location: '.$adminroute."login.php?error={$error}&data={$encoded}");
                     exit();
                 }

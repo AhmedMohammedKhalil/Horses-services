@@ -21,9 +21,21 @@ class DoctorController {
                 $password = trim($_POST['password']);
                 $data = [$email,$password];
                $encoded= json_encode(['email'=>$email]);
-                if(strlen($password)<8){
+                if (empty($email)) {
+                    $emailError="email required";
+                }
+                if (empty($password)) {
+                    $passwordError="password required";
+                } 
+                if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
-                    $error=json_encode(['password_error'=>$passwordError]);
+                } 
+                if(isset($emailError) || isset($passwordError)) 
+                {
+                    $error = json_encode([
+                        'email_error'=> isset($emailError) ? $emailError : '',
+                        'password_error'=>isset($passwordError) ? $passwordError : ''
+                    ]);
                     header('Location: '.$docotorroute."login.php?error={$error}&data={$encoded}");
                     exit();
                 }
@@ -62,6 +74,9 @@ class DoctorController {
                 if (empty($name)) {
                     array_push($error,"name required");
                 } 
+                if (empty($email)) {
+                    array_push($error,"email required");
+                } 
                 if (empty($specialization)) {
                     array_push($error,"specialization required");
                 } 
@@ -78,8 +93,14 @@ class DoctorController {
                         array_push($error,"mobile number contains numbers only");
                     }
                 } 
-                if (strlen($password)<8) {
-                    array_push($error,"password this less than 8 digit");
+                if (empty($password)) {
+                    array_push($error,"password requires");
+                } 
+                if (strlen($password)>0 && strlen($password)<8) {
+                    array_push($error,"this password less than 8 digit");
+                } 
+                if (empty($confirm_password)) {
+                    array_push($error,"confirm_password requires");
                 } 
                 if ($password!=$confirm_password) {
                     array_push($error,"passwords not matched");
@@ -93,7 +114,7 @@ class DoctorController {
                 if(!empty($error))
                 {
                     $error=json_encode($error);
-                    header("location: ../doctor/register.php?error={$error}&data={$encoded} " );
+                    header("location: ../doctor/register.php?error={$error}&data={$encoded}" );
                     exit();
                 }
                 $data = [$name,$email,$password,$confirm_password,$specialization,$mobile,$address,$description];

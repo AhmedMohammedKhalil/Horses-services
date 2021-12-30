@@ -19,10 +19,22 @@ class UserController {
                 $email = trim($_POST['email']);
                 $password = trim($_POST['password']);
                 $data = [$email,$password];
-               $encoded= json_encode(['email'=>$email]);
-                if(strlen($password)<8){
+                $encoded= json_encode(['email'=>$email]);
+                if(empty($email)) {
+                    $emailError="email required";
+                } 
+                if (empty($password)) {
+                    $passwordError="password required";
+                } 
+                if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
-                    $error=json_encode(['password_error'=>$passwordError]);
+                } 
+                if(isset($emailError) || isset($passwordError)) 
+                {
+                    $error = json_encode([
+                        'email_error'=> isset($emailError) ? $emailError : '',
+                        'password_error' => isset($passwordError) ? $passwordError : ''
+                    ]);                    
                     header('Location: '.$userroute."login.php?error={$error}&data={$encoded}");
                     exit();
                 }
@@ -53,8 +65,18 @@ class UserController {
                 $password = $_POST['password'];
                 $confirm_password = $_POST['confirm_password'];
                 $encoded= json_encode(['email'=>$email ,'name'=>$name]);
-                if (strlen($password)<8) {
-                    $error=json_encode(['password_error'=>"password this less than 8 digit"]);
+                if (empty($email)) {
+                    $error=json_encode(['email_error'=>"email required"]);
+                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
+                    exit();
+                } 
+                if (empty($password)) {
+                    $error=json_encode(['password_error'=>"password required"]);
+                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
+                    exit();
+                } 
+                if (strlen($password)>0 && strlen($password)<8) {
+                    $error=json_encode(['password_error'=>"password less than 8 digit"]);
                     header("location: ../user/register.php?error={$error}&data={$encoded} " );
                     exit();
                 } 

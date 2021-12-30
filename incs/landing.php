@@ -1,4 +1,3 @@
-<!-- Start Landing -->
 <div class="landing">
       <div class="container">
         <div class="text">
@@ -10,4 +9,3 @@
         </div>
       </div>
 </div>
-<!-- End Landing -->

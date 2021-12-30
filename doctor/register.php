@@ -1,6 +1,6 @@
 <?php
 
- // ob_start();
+  ob_start();
   session_start();
 
 $pageTitle = 'Doctor Register';
@@ -37,7 +37,7 @@ include 'init.php';
               } 
               ?>
 				<input class="input" type="text" placeholder="Your Specialization" name="specialization" value="<?php if(isset($_GET['error'])){echo $specialization ;}?>" />
-				<input class="input" type="text" placeholder="Your Phone" name="phone" value="<?php if(isset($_GET['error'])){echo $phone ;}?>" />
+				<input class="input" type="text" placeholder="Your Phone" name="phone" value="<?php if(isset($_GET['error'])){echo $mobile ;}?>" />
 				<input class="input" type="password" placeholder="Your Password" name="password" />
 				<input class="input" type="password" placeholder="Your Password again" name="confirm_password" />
 				<textarea class="input" placeholder="Your Address" name="address"><?php if(isset($_GET['error'])){echo $address ;}?></textarea>
@@ -50,6 +50,4 @@ include 'init.php';
     </div>
 <?php
 	include $inc . 'footer.php'; 
- // ob_end_flush();
-
 ?>

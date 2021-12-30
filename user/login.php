@@ -1,5 +1,5 @@
 <?php
-	//ob_start();
+	ob_start();
 	session_start();
 	$pageTitle = 'User login';
 	include 'init.php';
@@ -23,13 +23,13 @@
 			//	{$_SESSION['error'];}
 			?>
 				<input class="input" type="email" placeholder="Your Email" name="email" value=" <?php if(isset($_GET['error'])){echo $email ;}?> " />
-				<?php if(isset($_GET['error']) && isset($email_error))
+				<?php if(isset($_GET['error']) && isset($email_error) && !empty($email_error))
 				{
 						echo "<span style='color:red'>".ucwords($email_error) ."</span>";
 				} 
 				?>
 				<input class="input" type="password" placeholder="Your Password" name="password" />
-				<?php if(isset($_GET['error'])&& isset($password_error))
+				<?php if(isset($_GET['error'])&& isset($password_error) && !empty($password_error))
 				{
 						echo "<span style='color:red'>{$password_error}</span>";
 				} 
@@ -42,5 +42,5 @@
 </div>
 <?php
 	include $inc . 'footer.php';
-	//ob_end_flush();
+	ob_end_flush();
 ?>

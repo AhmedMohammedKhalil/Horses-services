@@ -41,7 +41,6 @@
                 <input class="input" type="password" placeholder="Your Password again" name="confirm_password" />
                 <textarea class="input" placeholder="Your Address" name="address"><?php if(isset($_GET['error'])){echo $address ;}?></textarea>
                 <textarea class="input" placeholder="Tell Us About You" name="description"><?php if(isset($_GET['error'])){echo $description ;}?></textarea>
-                <textarea class="input" placeholder="recommendations" name="recommendation"><?php if(isset($_GET['error'])){echo $recommendation ;}?></textarea>
                 <span>If you have account <a href="<?php echo $cont."Controller.php?do=showdocotorLogin"  ?>">Login Now</a></span>
                 <input class="button" type="submit" name="register" value="Register" />
             </form>

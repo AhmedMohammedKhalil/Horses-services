@@ -7,7 +7,7 @@
 <body>
     <div>
         <h4>Failed To Connect... Make Sure Your Connect with Database is Open</h4>
-        <a href="/Horses-services-mvc/">Go to Home</a>
+        <a href="/Horses-services/">Go to Home</a>
     </div>
 </body>
 </html>

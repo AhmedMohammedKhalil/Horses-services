@@ -1,12 +1,10 @@
 <?php
-   // ob_start();
+    ob_start();
     session_start();
     include('init.php');
     $pageTitle = "Home";
     include($inc.'header.php');
     include($inc.'landing.php');
-    //var_dump($_SESSION['trainer']);
-    exit();
 ?>
 
       <div class="cards" id="doctors">
@@ -110,5 +108,4 @@
       </div>
 <?php
     include($inc.'footer.php');
-    //ob_end_flush();
-
+    ob_end_flush();
