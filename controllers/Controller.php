@@ -78,5 +78,21 @@ if($action != "") {
         $trainer = new TrainerController();
         $trainer->register();
     }
-    
+    //home routes
+    if($action == 'showDoctor') {
+        $id = $_GET['id'];
+        HomeController::show_Doctor($id);
+    }
+    if($action == 'showTrainer') {
+        $id = $_GET['id'];
+        HomeController::show_Trainer($id);
+    }
+    if($action == 'showProduct') {
+        $id = $_GET['id'];
+        HomeController::show_Product($id);
+    }
+    if($action == 'makesearch') {
+        $search = $_POST['search'];
+        HomeController::search($search);
+    }
 }

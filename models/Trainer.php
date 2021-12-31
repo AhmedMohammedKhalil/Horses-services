@@ -110,4 +110,27 @@ class Trainer extends DB{
         
     }
     
+    public function getTrainers($select, $table, $order) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table ORDER BY $order DESC");
+		$statment->execute();
+
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+		return $rows;
+	}
+    public function getTrainer($select, $table,$order, $where) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
+    public function getSearchedTrainer($select, $table,$order,$where) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
 }

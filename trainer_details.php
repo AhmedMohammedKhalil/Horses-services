@@ -4,51 +4,65 @@
     include('init.php');
     $pageTitle = "Trainer Details";
     include($inc.'header.php');
+    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+    extract($data);
+    $trainer=$trainer[0];
 ?>
     <div class="component-details" id="trainer">
       <div class="details">
         <img src="<?php echo $imgs.'horse-trainer.png' ?>" alt="" />
         <div class="content">
-            <h2>Name</h2>
-            <h2>specialization</h2>
-            <h2>phone</h2>
-            <p>Details</p>
-            <p>Address</p>
+            <h2><?php echo $trainer['name'] ?></h2>
+            <h2><?php echo $trainer['address'] ?></h2>
+            <h2><?php echo $trainer['phone'] ?></h2>
+            <p><?php echo $trainer['description'] ?></p>
         </div>
       </div>
     </div>
     <div class="boxes" id="previous-works">
-      <h2 class="title">Cases</h2>
+     
+      <?php 
+            if($previous_works)
+                echo '<h2 class="title"> Previous works</h2>';
+            else 
+                echo '<h2 class="title">Previous works Not Found </h2>';
+      ?>
       <div class="container">
         <div class="info">
-            <!-- foreach -->
+        <?php foreach($previous_works as $w)  { ?>
           <div class="box">
             <img src="<?php echo $imgs.'horse-trainer.png' ?>" alt="" />
             <div class="text">
-              <h3>title</h3>
-              <h4>placement</h4>
-              <h4>duration</h4>
+              <h3><?php echo $w['job_title'] ?></h3>
+              <h4><?php echo $w['placement'] ?></h4>
+              <h4><?php echo $w['job_estimation'] ?></h4>
               <p>
-                Details   
+              <?php echo $w['details'] ?> 
               </p>
             </div>
           </div>
-            <!-- end -->
+          <?php }?>
         </div>
       </div>
     </div>
     <div class="product" id="products">
-        <h2 class="title">products</h2>
+        <?php 
+            if($previous_works)
+                echo '<h2 class="title">products</h2>';
+            else 
+                echo '<h2 class="title" style="text-decoration:none !important;">products Not Found </h2>';
+      ?>
         <div class="container">
-          <!-- foreach -->
+        <?php foreach($products as $p)  { ?>
           <div class="box" style="text-align: center;">
             <div class="image">
               <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
             </div>
-            <h4>50 KD</h4>
-                <a href="#">More</a>
+            <h4><?php echo $p['name'] ?></h4>
+            <h4><?php echo $p['price'] ?> KD</h4>
+            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showProduct&id='.$p['id'].'">Read more</a>' ?>
           </div>
-            <!-- end -->
+          <?php }?>
         </div>
       </div>
 

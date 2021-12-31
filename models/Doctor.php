@@ -111,4 +111,27 @@ class Doctor extends DB{
         }
         
     }
+
+    public function getDoctors($select, $table, $order) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table  ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
+    public function getDoctor($select, $table,$order, $where) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
+
+    public function getSearchedDoctor($select, $table,$order,$where) {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
 }

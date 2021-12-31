@@ -4,67 +4,102 @@
     include('init.php');
     $pageTitle = "search";
     include($inc.'header.php');
-?>    
-    <div class="search">
-        <form action="">
-            <input type="search" placeholder="Searching ...." />
-            <input type="submit" value="Search" />
+    if(isset($_GET['data']))
+    {
+      $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+      extract($data);
+    }
+    
+    
+?> 
+ 
+    <div class="search" style="min-height: calc(100vh - 243.4px);">
+        <form action="<?php echo $cont.'Controller.php?do=makesearch';?>" method="POST">
+            <input type="search" name="search" placeholder="Searching ...." value="<?php if(isset($oldSearch)) echo $oldSearch; ?>" />
+            <input type="submit" name="searching" value="Search" />
         </form>
+        <?php if(isset($error)){echo "<span style='color:red;text-align:center;display:block;font-size:20px;margin-bottom:10px'>$error</span>";} ?>
     </div>
-      <div class="cards" id="doctors">
-        <h2 class="title">Doctors</h2>
-        
-        <div class="container">
-          <!-- foreach -->
+  
+    
 
-          <div class="box">
-            <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />
-            <div class="content">
-              <h3>Doctor Name</h3>
-              <p>Details about Doctor</p>
-            </div>
-            <div class="info">
-              <a href="">Read More</a>
-            </div>
+
+
+    <?php
+    if(isset($doctors) ||isset($trainers)||isset($products)){
+    ?>
+      <div class="cards" id="doctors">
+      <?php 
+            if($doctors)
+                echo '<h2 class="title">Doctors</h2>';
+            else 
+                echo '<h2 class="title" style="border:none;">Doctors Not Found </h2>';
+        ?>
+        <div class="container">
+        
+
+        <?php foreach($doctors as $d)  { ?>
+
+        <div class="box">
+          <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />
+          <div class="content">
+            <h3><?php echo $d['name'] ?></h3>
+            <p><?php echo $d['description'] ?></p>
           </div>
-          <!-- end -->
+          <div class="info">
+        <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showDoctor&id='.$d['id'].'">Read more</a>' ?>
+          </div>
+        </div>
+        <?php }?>
 
         </div>
       </div>
 
       <div class="cards" id="trainers">
-        <h2 class="title">Trainers</h2>
+      <?php 
+            if($trainers)
+                echo '<h2 class="title">Trainers</h2>';
+            else 
+                echo '<h2 class="title" style="border:none;">Trainers Not Found </h2>';
+        ?>
         <div class="container">
-          <!-- foreach -->
+        <?php foreach($trainers as $t)  { ?>
           <div class="box">
             <img src="<?php echo $imgs ?>horse-trainer.png" alt="" />
             <div class="content">
-              <h3>trainer name</h3>
-              <p>details about trainer</p>
+              <h3><?php echo $t['name'] ?></h3>
+              <p><?php echo $t['description'] ?></p>
             </div>
             <div class="info">
-              <a href="">Read More</a>
+            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showTrainer&id='.$t['id'].'">Read more</a>' ?>
             </div>
           </div>
-          <!-- end -->
+          <?php }?>
 
         </div>
       </div>
 
       <div class="product" id="products">
-        <h2 class="title">products</h2>
+      <?php 
+            if($products)
+                echo '<h2 class="title">Doctors</h2>';
+            else 
+                echo '<h2 class="title" style="border:none;">Doctors Not Found </h2>';
+        ?>
         <div class="container">
-          <!-- foreach -->
+        <?php foreach($products as $p)  { ?>
           <div class="box" style="text-align: center;">
             <div class="image">
               <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
             </div>
-            <h4>50 KD</h4>
-                <a href="#">More</a>
+            <h4><?php echo $p['name'] ?></h4>
+            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showProduct&id='.$t['id'].'">Read more</a>' ?>
           </div>
-          <!-- end -->
+          <?php }?>
         </div>
       </div>
 <?php
+    }
+
     include($inc.'footer.php');
     ob_end_flush();

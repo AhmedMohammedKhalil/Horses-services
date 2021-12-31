@@ -4,16 +4,20 @@
     include('init.php');
     $pageTitle = "Doctor Details";
     include($inc.'header.php');
+    include_once('controllers/HomeController.php');
+    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+    extract($data);
+    $doctor=$doctor[0];
 ?>
     <div class="component-details" id="doctor">
       <div class="details">
         <img src="<?php echo $imgs.'doctor-image.jpg' ?>" alt="" />
         <div class="content">
-            <h2>Name</h2>
-            <h2>specialization</h2>
-            <h2>phone</h2>
-            <p>Details</p>
-            <p>Address</p>
+            <h2><?php echo $doctor['name'] ?></h2>
+            <h2><?php echo $doctor['specialization'] ?></h2>
+            <h2><?php echo $doctor['phone'] ?></h2>
+            <p><?php echo $doctor['description'] ?></p>
+            <p><?php echo $doctor['address'] ?></p>
         </div>
       </div>
     </div>
@@ -21,20 +25,20 @@
       <h2 class="title">Cases</h2>
       <div class="container">
         <div class="info">
-            <!-- foreach -->
+          <?php foreach($cases as $c)  { ?>
           <div class="box">
             <img src="<?php echo $imgs.'doctor-image.jpg' ?>" alt="" />
             <div class="text">
-              <h3>title</h3>
+              <h3><?php echo $c['title'] ?></h3>
               <p>
-                Details   
+              <?php echo $c['details'] ?>
               </p>
               <p>
-                treatmeant   
+              <?php echo $c['treatment'] ?> 
               </p>
             </div>
           </div>
-            <!-- end -->
+          <?php }?> 
         </div>
       </div>
     </div>
