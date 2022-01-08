@@ -42,4 +42,32 @@ class Admin extends DB{
             }
         }
     }
+    public function getAdmin($select, $table, $order)
+    {
+        $statment = $this->con->prepare("SELECT $select FROM $table ORDER BY $order DESC");
+		$statment->execute();
+
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+		return $rows;
+    }
+
+    public function update($admin_id,$data) 
+    {
+        extract($data);
+        $query = $this->con->prepare("UPDATE admins SET name=:name , email = :email  WHERE id={$admin_id}");
+        $query->bindParam("name", $name, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
+
+    public function changePassword($admin_id,$data) {
+        extract($data);
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $this->con->prepare("UPDATE admins SET password=:hash WHERE id={$admin_id}");
+        $query->bindParam("hash", $hash, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
 }

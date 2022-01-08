@@ -94,6 +94,32 @@ if($action != "") {
         $admin->logout();
     }
 
+    if($action == 'showAdminProfile') {
+        $user = new AdminController();
+        $user->adminProfile();
+    }
+    if($action == 'showAdminSettings') {
+        $user = new AdminController();
+        $user->adminSettings();
+    }
+    if($action=='editAdmin')
+    {
+        $user = new AdminController();
+        $user->editAdmin();
+    }
+
+    if($action == "showAdminChangePassword")
+    {   
+        $user = new AdminController();
+        $user->showChangePassword();
+    }
+
+    if($action == "AdminchangePass") {
+        $user = new AdminController();
+        $user->changePassword();
+    }
+
+
     //trainer routes
     if($action == 'showtrainerLogin') {
         TrainerController::show_login();
