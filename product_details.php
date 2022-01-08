@@ -15,7 +15,11 @@
             <h2><?php echo $product['name'] ?></h2>
             <h2><?php echo $product['price'] ?> KD</h2>
             <p><?php echo $product['details'] ?></p>
-            <a href="#">Buy</a>
+            <?php if(isset($_SESSION['type'])) {if($_SESSION['type']=="user") { echo '<a class="button" href="'.$cont.'Controller.php?do=buyProduct&id='.$product['id'].'">Buy</a>' ;}}?>
+        </div>
+
+        <div>
+          
         </div>
       </div>
     </div>

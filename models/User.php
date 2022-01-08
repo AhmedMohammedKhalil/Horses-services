@@ -103,4 +103,33 @@ class User {
         
     }
 
+    public function getUser($select, $table, $order)
+    {
+        $statment = $this->con->prepare("SELECT $select FROM $table ORDER BY $order DESC");
+		$statment->execute();
+
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+
+		return $rows;
+    }
+
+    public function update($user_id,$data,$photoName) 
+    {
+        extract($data);
+        $query = $this->con->prepare("UPDATE users SET name=:name , email = :email , photo =:photoName WHERE id={$user_id}");
+        $query->bindParam("name", $name, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("photoName", $photoName, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
+
+    public function changePassword($user_id,$data) {
+        extract($data);
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $this->con->prepare("UPDATE users SET password=:hash WHERE id={$user_id}");
+        $query->bindParam("hash", $hash, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
 }

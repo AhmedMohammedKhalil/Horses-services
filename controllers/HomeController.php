@@ -41,7 +41,7 @@ class HomeController {
 
         $trainer = $trainer->getTrainer('*','trainers','id',"id ={$id}");
         $works = $works->getTrainerWork('*','previous_works','id',"trainer_id ={$id}");
-        $products = $products->getTrainerProducts('*','products','id',"trainer_id ={$id}");
+        $products = $products->getTrainerProducts('products.*','products ,trainer_products','products.id',"products.id = trainer_products.product_id AND trainer_products.trainer_id ={$id}");
 
         $data =  json_encode(['trainer' => $trainer,'previous_works' => $works ,'products'=>$products]);
         header("location: ../trainer_details.php?data={$data}");
@@ -54,12 +54,12 @@ class HomeController {
         $product = new Product();  //getDoctorsCases
 
         $product = $product->getProduct('*','products','id',"id ={$id}");
-
         $data =  json_encode(['product' => $product]);
         header("location: ../product_details.php?data={$data}");
     }
     
-    public static function search($input) {
+    public static function search($input) 
+    {
         if(!empty($input))
         {
         include_once('../models/Doctor.php');
@@ -77,13 +77,14 @@ class HomeController {
             $data = json_encode(['doctors' => $doctors,'trainers' => $trainers ,'products'=>$products ,'oldSearch'=>$oldSearch]);
             header("location: ../search.php?data={$data}");
 
-    }
-    else {
-        $data = json_encode(['error'=>"Search Empty"]);
-        header("location: ../search.php?data={$data}");
-    }
+        }
+        else 
+        {
+            $data = json_encode(['error'=>"Search Empty"]);
+            header("location: ../search.php?data={$data}");
+         }
 
- }
+    }
     
 }
 

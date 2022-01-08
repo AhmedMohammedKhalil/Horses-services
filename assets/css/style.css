@@ -12,6 +12,30 @@ ul {
   margin: 0;
   padding: 0;
 }
+
+::-webkit-file-upload-button {
+  background:#333536;
+  color: white;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+}
+
+input[type='file'] {
+  cursor: pointer;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+input[type='date'] {
+
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: none;
+}
+
 .container {
   padding-left: 15px;
   padding-right: 15px;
@@ -267,6 +291,8 @@ ul {
 }
 
 .component-details .details img {
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -353,8 +379,7 @@ ul {
 }
 
 
-
-.product .box a ,#product a{
+.box a ,.component-details a {
   display: block;
   border: 3px solid black;
   width: fit-content;
@@ -365,10 +390,20 @@ ul {
   border-radius: 6px;
   color: black;
   text-decoration: none;
-
 }
 
-.product .box a:hover , #product a:hover{
+.cards#trainers .box a , .cards#doctors .box a{
+  border:none;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+}
+
+.product .box a:hover , .component-details a:hover{
   background-color: #2196f3;
   color:white;
 }
@@ -414,6 +449,94 @@ ul {
 .search form input[type="submit"]:hover {
   background-color: #2196f3;
 }
+
+#lists{
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center !important;
+  width: 80%;
+}
+
+#lists td, #lists th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#lists tr:nth-child(even){background-color: #f2f2f2;}
+
+#lists tr a {
+  text-decoration: none;
+  color: black;
+}
+
+#lists tr a:hover {
+  text-decoration: underline;
+}
+
+#lists th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #2196f3;
+  color: white;
+}
+
+
+.stats {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  position: relative;
+  min-height: calc(100vh - 293.4px);
+  width: 80%;
+  margin: 0 auto;
+}
+
+.stats h2 {
+  font-weight: bold;
+  font-size: 40px;
+  width: fit-content;
+  margin: 0 auto 50px;
+  position: relative;
+}
+
+.stats .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stats .box {
+  background-color: #ccc;
+  padding: 30px 15px;
+  text-align: center;
+  position: relative;
+  opacity: 0.8;
+}
+
+.stats .box .number {
+  display: block;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.stats .box .text {
+  color: black;
+  font-style: italic;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.stats .box a:hover {
+  background-color: #2196f3;
+}
+
+.stats .box a:hover .text {
+  color : white
+}
+
 
 .footer {
   background-color: #191919;

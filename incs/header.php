@@ -37,6 +37,9 @@
                 <a href="<?php  echo $cont."Controller.php?do=showUserProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
+              <a href="<?php echo $cont."Controller.php?do=userPurchases"   ?>">Purchases</a>
+            </li>
+            <li>
               <a href="<?php echo $cont."Controller.php?do=userLogout"   ?>">Logout</a>
             </li>
           <?php  } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "trainer") { 

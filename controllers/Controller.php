@@ -7,7 +7,7 @@ include_once('DoctorController.php');
 include_once('TrainerController.php');
 $action = $_GET['do'];
 if($action != "") {
-    //user routes
+    //user routes 
     if($action == 'showuserLogin') {
         UserController::show_login();
     }
@@ -26,6 +26,41 @@ if($action != "") {
         $user = new UserController();
         $user->register();
     }
+
+    if($action == 'buyProduct') {
+        $id = $_GET['id'];
+        UserController::buy_Product($id);
+    }
+
+    if($action == 'userPurchases') {
+        $user = new UserController();
+        $user->showPurchases();
+    }
+    if($action == 'showUserProfile') {
+        $user = new UserController();
+        $user->userProfile();
+    }
+    if($action == 'showUserSettings') {
+        $user = new UserController();
+        $user->userSettings();
+    }
+    if($action=='editUser')
+    {
+        $user = new UserController();
+        $user->editUser();
+    }
+
+    if($action == "showUserChangePassword")
+    {   
+        $user = new UserController();
+        $user->showChangePassword();
+    }
+
+    if($action == "UserchangePass") {
+        $user = new UserController();
+        $user->changePassword();
+    }
+
     //doctor routes  doctorLogin
     if($action == 'showdoctorLogin') {
         DoctorController::show_login();
