@@ -56,6 +56,9 @@
                 <a href="<?php  echo $cont."Controller.php?do=showDoctorProfile"  ?>"><?php echo $_SESSION['username'] ?></a>
             </li>
             <li>
+            <a href="<?php  echo $cont."Controller.php?do=showCases"  ?>">My Cases</a>
+          </li>
+            <li>
               <a href="<?php echo $cont."Controller.php?do=doctorLogout"   ?>">Logout</a>
             </li>
           <?php }}?>

@@ -61,7 +61,10 @@ if($action != "") {
         $user->changePassword();
     }
 
-    //doctor routes  doctorLogin
+    //-------------------------doctor routes  doctorLogin-------------------------------
+
+
+
     if($action == 'showdoctorLogin') {
         DoctorController::show_login();
     } 
@@ -70,18 +73,72 @@ if($action != "") {
     }
 
     if($action == 'doctorLogin') {
-        $user = new DoctorController();
-        $user->login();
+        $doctor = new DoctorController();
+        $doctor->login();
     }
     if($action == 'doctorLogout') {
-        $user = new DoctorController();
-        $user->logout();
+        $doctor = new DoctorController();
+        $doctor->logout();
     }
     if($action == 'doctorRegister') {
-        $user = new DoctorController();
-        $user->register();
+        $doctor = new DoctorController();
+        $doctor->register();
     }
-    //admin routes
+    if($action == 'showDoctorProfile') {
+        $doctor = new DoctorController();
+        $doctor->doctorProfile();
+    }
+    if($action == 'showDoctorSettings') {
+        $doctor = new DoctorController();
+        $doctor->doctorSettings();
+    }
+    if($action=='editDoctor')
+    {
+        $doctor = new DoctorController();
+        $doctor->editDoctor();
+    }
+
+    if($action == "showDoctorChangePassword")
+    {   
+        $doctor = new DoctorController();
+        $doctor->showChangePassword();
+    }
+
+    if($action == "DoctorchangePass") {
+        $doctor = new DoctorController();
+        $doctor->changePassword();
+    }
+//----------------------------------case routes-------------------------------------------
+    if($action == "showCases") {
+        $doctor = new DoctorController();
+        $doctor->getCases();
+    }
+    
+    if($action == "addCase") {
+        $doctor = new DoctorController();
+        $doctor->addCase();
+    }
+    if($action == "storeCase") {
+        $doctor = new DoctorController();
+        $doctor->storeCase();
+    }
+
+    if($action == 'editCase') {
+        $id = $_GET['id'];
+        $doctor = new DoctorController();
+        $doctor->editCase($id);
+    }
+    if($action == "updateCase") {
+        $doctor = new DoctorController();
+        $doctor->updateCase();
+    }
+
+    if($action == 'deleteCase') {
+        $id = $_GET['id'];
+        $doctor = new DoctorController();
+        $doctor->deleteCase($id);
+    }
+    //-------------------------------------------------------------admin routes----------------------------------
     if($action == 'showadminLogin') {
         AdminController::show_login();
     }

@@ -112,14 +112,16 @@ class Doctor extends DB{
         
     }
 
-    public function getDoctors($select, $table, $order) {
+    public function getDoctors($select, $table, $order)
+    {
     
         $statment = $this->con->prepare("SELECT $select FROM $table  ORDER BY $order DESC");
 		$statment->execute();
 		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
 		return $rows;
 	}
-    public function getDoctor($select, $table,$order, $where) {
+    public function getDoctor($select, $table,$order, $where) 
+    {
     
         $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
 		$statment->execute();
@@ -127,11 +129,37 @@ class Doctor extends DB{
 		return $rows;
 	}
 
-    public function getSearchedDoctor($select, $table,$order,$where) {
+    public function getSearchedDoctor($select, $table,$order,$where) 
+    {
     
         $statment = $this->con->prepare("SELECT $select FROM $table WHERE $where ORDER BY $order DESC");
 		$statment->execute();
 		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
 		return $rows;
 	}
+
+    public function update($doctor_id,$data,$photoName) 
+    {
+        extract($data);
+        $query = $this->con->prepare("UPDATE doctors SET name=:name , email = :email , photo =:photoName, specialization =:specialization,phone =:phone ,address =:address ,description=:description WHERE id={$doctor_id}");
+        $query->bindParam("name", $name, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("photoName", $photoName, PDO::PARAM_STR);
+        $query->bindParam("specialization", $specialization, PDO::PARAM_STR);
+        $query->bindParam("phone", $phone, PDO::PARAM_STR);
+        $query->bindParam("address", $address, PDO::PARAM_STR);
+        $query->bindParam("description", $description, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
+
+    public function changePassword($doctor_id,$data) 
+    {
+        extract($data);
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $this->con->prepare("UPDATE doctors SET password=:hash WHERE id={$doctor_id}");
+        $query->bindParam("hash", $hash, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
 }

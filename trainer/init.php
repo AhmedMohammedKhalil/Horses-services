@@ -7,6 +7,7 @@
     $imgs 	= '../assets/images/'; 
 	$inc  = "../incs/";
 	$app   = '../';
+	$files = "../files/";
 
 
 	$adminroute = '../admin/'; 

@@ -126,4 +126,118 @@ class TrainerController {
         }
 
     }
+
+    public function userProfile()
+    {
+        include_once('../models/User.php');
+        
+        $user_id=$_SESSION['user']['id'];
+        $user = new User();  
+        $user = $user->getUser('*','users','id',"id ={$user_id}");
+        $data =  json_encode(['user' => $user]);
+        header("location: ../user/profile.php?data={$data}");
+    }
+    public function userSettings ($userroute = '../user/') {
+        header('Location: '.$userroute.'settings.php');
+    }
+
+    public function editUser($userroute = '../user/')
+    {   
+        if($_SERVER['REQUEST_METHOD'] == 'POST') 
+        {  if(isset($_POST['userEdit'])) 
+            {
+            $name=trim($_POST['name']);
+            $email = trim($_POST['email']);
+            $photoName = $_FILES['photo']['name'];
+            $photoSize = $_FILES['photo']['size'];
+            $photoTmp	= $_FILES['photo']['tmp_name'];
+            $photoAllowedExtension = array("jpeg", "jpg", "png");
+            $explode = explode('.', $photoName);
+            $photoExtension = strtolower(end($explode));
+            $data = [
+                'email'=>$email,
+                'name'=>$name,
+            ];
+            $encoded= json_encode($data);
+            $error=[];
+
+            if (! empty($photoName) && ! in_array($photoExtension, $photoAllowedExtension)) {
+                $error[] = 'This Extension Is Not <strong>Allowed</strong>';
+            }
+            if ($photoSize > 4194304) {
+                $error[] = 'photo Cant Be Larger Than <strong>4MB</strong>';
+            }
+            if (empty($name)) {
+                array_push($error,"Username required");
+            } 
+
+            if(!empty($error))
+            {
+                $error=json_encode($error);
+                header("location: {$userroute}settings.php?errors={$error}&data={$encoded}" );
+                exit();
+            }
+            $user_id = $_SESSION['user']['id'];
+                $oldphoto = $_SESSION['user']['photo'];
+                $path = '../files/users/'.$user_id;
+            if(!is_dir($path)) {
+                mkdir($path);
+            } 
+            if($oldphoto != null) {
+                unlink($path.'/'.$oldphoto);
+            }
+            move_uploaded_file($photoTmp, '../files/users/'.$user_id.'/'. $photoName);
+
+            $user = new User();
+            $success = $user->update($user_id,$data,$photoName);
+            if($success) {
+                $_SESSION['user']['name'] = $name;
+                $_SESSION['username'] = $name;
+                $_SESSION['user']['email'] = $email;
+                $_SESSION['user']['photo'] = $photoName;
+                header('Location: Controller.php?do=showUserProfile'); 
+            }
+
+        }
+        }
+    }
+
+    public function showChangePassword ($userroute = '../user/') {
+        header('Location: '.$userroute.'changepassword.php');
+    }
+    public function changePassword ($userroute = '../user/') 
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') 
+        { 
+            if(isset($_POST['change_password'])) {
+                $password = trim($_POST['password']);
+                $confirm_password = trim($_POST['confirm_passowrd']);
+                $data = [
+                    'password' => $password
+                ];
+                $error=[];
+                if(strlen($password)<8) {
+                    array_push($error,"please enter password greater than 8 digits");
+                } 
+                if ($password!=$confirm_password) {
+                    array_push($error,"passwords not matched");
+                } 
+                if(!empty($error))
+                {
+                    $error=json_encode($error);
+                    header("location: {$userroute}changepassword.php?errors={$error}" );
+                    exit();
+                }
+                $user = new User();
+                $user_id = $_SESSION['user']['id'];
+                $success = $user->changePassword($user_id,$data);
+                if($success) {
+                    $_SESSION['user']['password'] = password_hash($password, PASSWORD_BCRYPT);
+                    header('Location: Controller.php?do=showUserProfile'); 
+                }
+
+            }
+        }
+        
+    }
 }
