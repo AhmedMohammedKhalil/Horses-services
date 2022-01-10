@@ -64,7 +64,7 @@ class DoctorController {
                 $name=trim($_POST['name']);
                 $email = trim($_POST['email']);
                 $specialization = trim($_POST['specialization']);
-                $mobile = trim($_POST['mobile']);
+                $mobile = trim($_POST['phone']);
                 $address = trim($_POST['address']);
                 $description = trim($_POST['description']);
                 $password = trim($_POST['password']);
@@ -152,11 +152,13 @@ class DoctorController {
             $address=trim($_POST['address']);
             $description=trim($_POST['description']);
             $photoName = $_FILES['photo']['name'];
-            $photoSize = $_FILES['photo']['size'];
-            $photoTmp	= $_FILES['photo']['tmp_name'];
-            $photoAllowedExtension = array("jpeg", "jpg", "png");
-            $explode = explode('.', $photoName);
-            $photoExtension = strtolower(end($explode));
+            if(!empty($photoName)) {
+                $photoSize = $_FILES['photo']['size'];
+                $photoTmp	= $_FILES['photo']['tmp_name'];
+                $photoAllowedExtension = array("jpeg", "jpg", "png");
+                $explode = explode('.', $photoName);
+                $photoExtension = strtolower(end($explode));
+            }
             $data = [
                 'email'=>$email,
                 'name'=>$name,
@@ -171,7 +173,7 @@ class DoctorController {
             if (! empty($photoName) && ! in_array($photoExtension, $photoAllowedExtension)) {
                 $error[] = 'This Extension Is Not <strong>Allowed</strong>';
             }
-            if ($photoSize > 4194304) {
+            if (! empty($photoName) && $photoSize > 4194304) {
                 $error[] = 'photo Cant Be Larger Than <strong>4MB</strong>';
             }
             if (empty($name)) {
@@ -210,18 +212,21 @@ class DoctorController {
                 exit();
             }
             $doctor_id = $_SESSION['doctor']['id'];
-                $oldphoto = $_SESSION['doctor']['photo'];
+            $oldphoto = $_SESSION['doctor']['photo'];
+            if(!empty($photoName)) {
                 $path = '../files/doctors/'.$doctor_id;
-            if(!is_dir($path)) {
-                mkdir($path);
-            } 
-            if($oldphoto != null) {
-                unlink($path.'/'.$oldphoto);
+                if(!is_dir($path)) {
+                    mkdir($path);
+                } 
+                if($oldphoto != null) {
+                    unlink($path.'/'.$oldphoto);
+                }
+                move_uploaded_file($photoTmp, '../files/doctors/'.$doctor_id.'/'. $photoName);
             }
-            move_uploaded_file($photoTmp, '../files/doctors/'.$doctor_id.'/'. $photoName);
 
             $doctor = new Doctor();
-            $success = $doctor->update($doctor_id,$data,$photoName);
+            $photo = !empty($photoName) ? $photoName : $oldphoto;
+            $success = $doctor->update($doctor_id,$data,$photo);
             if($success) {
                 $_SESSION['doctor']['name'] = $name;
                 $_SESSION['username'] = $name;
@@ -230,7 +235,7 @@ class DoctorController {
                 $_SESSION['doctor']['address'] = $address;
                 $_SESSION['doctor']['phone'] = $phone;
                 $_SESSION['doctor']['description'] = $description;
-                $_SESSION['doctor']['photo'] = $photoName;
+                $_SESSION['doctor']['photo'] = $photo;
                 header('Location: Controller.php?do=showDoctorProfile'); 
             }
 

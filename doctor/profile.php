@@ -15,7 +15,7 @@
 <div class="component-details" >
       <div class="details">
 	  <?php if($_SESSION['doctor']['photo']  == null) {?>
-			<img src="<?php echo $uploads.'doctors/default.png'?>" alt="" >
+			<img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="" >
 		<?php }else{ ?>
 			<img src="<?php echo $files.'doctors/'.$_SESSION['doctor']['id'].'/'.$_SESSION['doctor']['photo'] ?>" alt="">
 		<?php }?>

@@ -11,8 +11,13 @@
 ?>
     <div class="component-details" id="doctor">
       <div class="details">
-        <img src="<?php echo $imgs.'doctor-image.jpg' ?>" alt="" />
         <div class="content">
+            <?php if($doctor['photo']  == null ) {?>
+              <img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="" >
+            <?php }else{ ?>
+              <img src="<?php echo $files.'doctors/'.$doctor['id'].'/'.$doctor['photo']?>" alt="">
+            <?php }?> 
+               
             <h2><?php echo $doctor['name'] ?></h2>
             <h2><?php echo $doctor['specialization'] ?></h2>
             <h2><?php echo $doctor['phone'] ?></h2>

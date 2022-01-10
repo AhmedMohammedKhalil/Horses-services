@@ -10,8 +10,11 @@
 ?>
     <div class="component-details" id="product">
       <div class="details">
-        <img src="<?php echo $imgs.'prod-1.jpg' ?>" alt="" />
-        <div class="content">
+            <?php if($product['photo']  == null ) {?>
+              <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="" >
+            <?php }else{ ?>
+              <img src="<?php echo $files.'products/'.$product['id'].'/'.$product['photo']?>" alt="">
+            <?php }?>        <div class="content">
             <h2><?php echo $product['name'] ?></h2>
             <h2><?php echo $product['price'] ?> KD</h2>
             <p><?php echo $product['details'] ?></p>

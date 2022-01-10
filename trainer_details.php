@@ -10,8 +10,11 @@
 ?>
     <div class="component-details" id="trainer">
       <div class="details">
-        <img src="<?php echo $imgs.'horse-trainer.png' ?>" alt="" />
-        <div class="content">
+            <?php if($trainer['photo']  == null ) {?>
+                <img src="<?php echo $imgs.'horse-trainer.png'?>" alt="" >
+              <?php }else{ ?>
+                <img src="<?php echo $files.'trainers/'.$trainer['id'].'/'.$trainer['photo'] ?>" alt="">
+              <?php }?>        <div class="content">
             <h2><?php echo $trainer['name'] ?></h2>
             <h2><?php echo $trainer['address'] ?></h2>
             <h2><?php echo $trainer['phone'] ?></h2>

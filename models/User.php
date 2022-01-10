@@ -10,10 +10,6 @@ class User {
         $this->con = $db->connect();
     }
 
-    public function insert() 
-    {
-    }
-
     public function select($data) 
     {
         $email=$data[0];
@@ -51,18 +47,18 @@ class User {
     {
         $name=$data[0];
         $email=$data[1];
-        $password=$data[2];
-        $confirm_password=$data[3];
-        if($password ==$confirm_password)
-        {
+        $address=$data[2];
+        $phone=$data[3];
+        $password=$data[4];
+        
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
-            $encoded= json_encode(['email'=>$email ,'name'=>$name]);
+            $encoded= json_encode(['email'=>$email ,'name'=>$name,'address'=>$address ,'phone'=>$phone]);
             $query = $this->con->prepare("SELECT * FROM users WHERE email=:email");
             $query->bindParam("email", $email, PDO::PARAM_STR);
             $query->execute();
             $result = $query->fetch(PDO::FETCH_ASSOC);
             if ($query->rowCount() > 0) {
-                $error=json_encode(['email_error'=>"this email exist"]);
+                $error=json_encode(["this email exist"]);
                 header("location: ../user/register.php?error={$error}&data={$encoded} " );
                 exit();
             } 
@@ -70,10 +66,13 @@ class User {
             {
                 if ($query->rowCount() == 0) {
                    
-                    $query = $this->con->prepare("INSERT INTO users(name,email,password) VALUES (:name,:email,:password_hash)");
+                    $query = $this->con->prepare("INSERT INTO users(name,email,password,address,phone) VALUES (:name,:email,:password_hash,:address,:phone)");
                     $query->bindParam("name", $name, PDO::PARAM_STR);
                     $query->bindParam("email", $email, PDO::PARAM_STR);
                     $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
+                    $query->bindParam("address", $address, PDO::PARAM_STR);
+                    $query->bindParam("phone", $phone, PDO::PARAM_STR);
+
                     $insert_result = $query->execute();
                     if($insert_result){
                         $query = $this->con->prepare("SELECT * FROM users WHERE email=:email");
@@ -86,20 +85,13 @@ class User {
                     header('location: ../index.php' );
                     exit();
                     }else{
-                        $error=json_encode(['server_error'=>"sever error exist"]);
+                        $error=json_encode(["sever error exist"]);
                         header("location: ../user/register.php?error={$error}&data={$encoded} " );
                         exit();
                     }
                     
                 } 
             }
-        }
-        else {
-            $encoded= json_encode(['email'=>$email ,'name'=>$name]);        
-            $error=json_encode(['password_error'=>"password and confirm not matched "]);
-            header("location: ../user/register.php?error={$error}&data={$encoded} " );
-            exit();
-        }
         
     }
 
@@ -116,10 +108,12 @@ class User {
     public function update($user_id,$data,$photoName) 
     {
         extract($data);
-        $query = $this->con->prepare("UPDATE users SET name=:name , email = :email , photo =:photoName WHERE id={$user_id}");
+        $query = $this->con->prepare("UPDATE users SET name=:name , email = :email , photo =:photoName ,phone =:phone , address =:address WHERE id={$user_id}");
         $query->bindParam("name", $name, PDO::PARAM_STR);
         $query->bindParam("email", $email, PDO::PARAM_STR);
         $query->bindParam("photoName", $photoName, PDO::PARAM_STR);
+        $query->bindParam("phone", $phone, PDO::PARAM_STR);
+        $query->bindParam("address", $address, PDO::PARAM_STR);
         $successed = $query->execute();
         return $successed;
     }

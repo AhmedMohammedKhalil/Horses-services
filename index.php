@@ -20,7 +20,11 @@
         <?php foreach($doctors as $d)  { ?>
 
           <div class="box">
-            <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />
+            <?php if($d['photo']  == null ) {?>
+              <img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="" >
+            <?php }else{ ?>
+              <img src="<?php echo $files.'doctors/'.$d['id'].'/'.$d['photo']?>" alt="">
+            <?php }?>
             <div class="content">
               <h3><?php echo $d['name'] ?></h3>
               <p><?php echo $d['description'] ?></p>
@@ -44,7 +48,11 @@
         <div class="container">
         <?php foreach($trainers as $t)  { ?>
           <div class="box">
-            <img src="<?php echo $imgs ?>horse-trainer.png" alt="" />
+              <?php if($t['photo']  == null ) {?>
+                <img src="<?php echo $imgs.'horse-trainer.png'?>" alt="" >
+              <?php }else{ ?>
+                <img src="<?php echo $files.'trainers/'.$t['id'].'/'.$t['photo'] ?>" alt="">
+              <?php }?>
             <div class="content">
               <h3><?php echo $t['name'] ?></h3>
               <p><?php echo $t['description'] ?></p>
@@ -69,7 +77,11 @@
         <?php foreach($products as $p)  { ?>
           <div class="box" style="text-align: center;">
             <div class="image">
-              <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
+              <?php if($p['photo']  == null ) {?>
+                <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="" >
+              <?php }else{ ?>
+                <img src="<?php echo $files.'products/'.$p['id'].'/'.$p['photo']?>" alt="">
+              <?php }?>
             </div>
             <h4><?php echo $p['name'] ?></h4>
             <h2><?php echo $p['price'] ?> KD</h2>

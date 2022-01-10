@@ -22,7 +22,7 @@
 			//if($_GET['error'])
 			//	{$_SESSION['error'];}
 			?>
-				<input class="input" type="email" placeholder="Your Email" name="email" value=" <?php if(isset($_GET['error'])){echo $email ;}?> " />
+				<input class="input" type="email" placeholder="Your Email" name="email" value="<?php if(isset($_GET['error'])){echo $email ;}?>" />
 				<?php if(isset($_GET['error']) && isset($email_error) && !empty($email_error))
 				{
 						echo "<span style='color:red'>".ucwords($email_error) ."</span>";

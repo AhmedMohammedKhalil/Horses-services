@@ -64,30 +64,54 @@ class UserController {
             if(isset($_POST['register'])) {
                 $name=trim($_POST['name']);
                 $email = trim($_POST['email']);
+                $phone = trim($_POST['phone']);
+                $address = trim($_POST['address']);
                 $password = $_POST['password'];
                 $confirm_password = $_POST['confirm_password'];
-                $encoded= json_encode(['email'=>$email ,'name'=>$name]);
+                
+                $encoded= json_encode(['email'=>$email ,'name'=>$name,'address'=>$address ,'phone'=>$phone]);
+                $error = [];
+                if (empty($name)) {
+                    array_push($error,"name required");
+                } 
                 if (empty($email)) {
-                    $error=json_encode(['email_error'=>"email required"]);
-                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
-                    exit();
+                    array_push($error,"email required");
+                } 
+                if (empty($address)) {
+                    array_push($error,"address required");
+                } 
+                if (empty($phone) || strlen($phone)<6 || !is_numeric($phone)) {
+                    if(empty($phone))
+                    {
+                        array_push($error,"phone required");
+                    }
+                    else if(strlen($phone)<6)
+                    {
+                        array_push($error,"phone Must be 6 digit");
+                    }
+                    else{
+                        array_push($error,"phone number contains numbers only");
+                    }
                 } 
                 if (empty($password)) {
-                    $error=json_encode(['password_error'=>"password required"]);
-                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
-                    exit();
+                    array_push($error,"password requires");
                 } 
                 if (strlen($password)>0 && strlen($password)<8) {
-                    $error=json_encode(['password_error'=>"password less than 8 digit"]);
-                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
-                    exit();
+                    array_push($error,"this password less than 8 digit");
+                } 
+                if (empty($confirm_password)) {
+                    array_push($error,"confirm_password requires");
                 } 
                 if ($password!=$confirm_password) {
-                    $error=json_encode(['password_error'=>"passwords not match"]);
-                    header("location: ../user/register.php?error={$error}&data={$encoded} " );
-                    exit();
+                    array_push($error,"passwords not matched");
                 } 
-                $data = [$name,$email,$password,$confirm_password];
+                if(!empty($error))
+                {
+                    $error=json_encode($error);
+                    header("location: ../user/register.php?error={$error}&data={$encoded}" );
+                    exit();
+                }
+                $data = [$name,$email,$address,$phone,$password];
                 $user = new User();
                 $user->add($data);
 
@@ -137,15 +161,22 @@ class UserController {
             {
             $name=trim($_POST['name']);
             $email = trim($_POST['email']);
+            $phone = trim($_POST['phone']);
+            $address = trim($_POST['address']);
             $photoName = $_FILES['photo']['name'];
-            $photoSize = $_FILES['photo']['size'];
-            $photoTmp	= $_FILES['photo']['tmp_name'];
-            $photoAllowedExtension = array("jpeg", "jpg", "png");
-            $explode = explode('.', $photoName);
-            $photoExtension = strtolower(end($explode));
+            if(!empty($photoName)) {
+                $photoSize = $_FILES['photo']['size'];
+                $photoTmp	= $_FILES['photo']['tmp_name'];
+                $photoAllowedExtension = array("jpeg", "jpg", "png");
+                $explode = explode('.', $photoName);
+                $photoExtension = strtolower(end($explode));
+            }
             $data = [
                 'email'=>$email,
                 'name'=>$name,
+                'phone'=>$phone,
+                'address'=>$address,
+
             ];
             $encoded= json_encode($data);
             $error=[];
@@ -153,11 +184,27 @@ class UserController {
             if (! empty($photoName) && ! in_array($photoExtension, $photoAllowedExtension)) {
                 $error[] = 'This Extension Is Not <strong>Allowed</strong>';
             }
-            if ($photoSize > 4194304) {
+            if (! empty($photoName) && $photoSize > 4194304) {
                 $error[] = 'photo Cant Be Larger Than <strong>4MB</strong>';
             }
             if (empty($name)) {
-                array_push($error,"Username required");
+                array_push($error,"name required");
+            }
+            if (empty($address)) {
+                array_push($error,"address required");
+            } 
+            if (empty($phone) || strlen($phone)<6 || !is_numeric($phone)) {
+                if(empty($phone))
+                {
+                    array_push($error,"phone required");
+                }
+                else if(strlen($phone)<6)
+                {
+                    array_push($error,"phone Must be 6 digit");
+                }
+                else{
+                    array_push($error,"phone number contains numbers only");
+                }
             } 
 
             if(!empty($error))
@@ -167,23 +214,29 @@ class UserController {
                 exit();
             }
             $user_id = $_SESSION['user']['id'];
-                $oldphoto = $_SESSION['user']['photo'];
+            $oldphoto = $_SESSION['user']['photo'];
+            if(!empty($photoName)) {
                 $path = '../files/users/'.$user_id;
-            if(!is_dir($path)) {
-                mkdir($path);
-            } 
-            if($oldphoto != null) {
-                unlink($path.'/'.$oldphoto);
+                if(!is_dir($path)) {
+                    mkdir($path);
+                } 
+                if($oldphoto != null) {
+                    unlink($path.'/'.$oldphoto);
+                }
+                move_uploaded_file($photoTmp, '../files/users/'.$user_id.'/'. $photoName);
             }
-            move_uploaded_file($photoTmp, '../files/users/'.$user_id.'/'. $photoName);
+                
 
             $user = new User();
-            $success = $user->update($user_id,$data,$photoName);
+            $photo = !empty($photoName) ? $photoName : $oldphoto;
+            $success = $user->update($user_id,$data,$photo);
             if($success) {
                 $_SESSION['user']['name'] = $name;
                 $_SESSION['username'] = $name;
                 $_SESSION['user']['email'] = $email;
-                $_SESSION['user']['photo'] = $photoName;
+                $_SESSION['user']['phone'] = $phone;
+                $_SESSION['user']['address'] = $address;
+                $_SESSION['user']['photo'] = $photo;
                 header('Location: Controller.php?do=showUserProfile'); 
             }
 

@@ -20,7 +20,7 @@
         </div>
         <?php foreach($cases as $c)  { ?>
             <div class="box">
-              <img src="../assets/images/doctor-image-1.jpg" alt="" />
+              <img src="<?php echo $imgs?>doctor-image-1.jpg" alt="" />
               <div class="text">
                 <h3><?php echo $c['title'] ?></h3>
                 <p>

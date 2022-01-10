@@ -45,7 +45,6 @@ class Doctor extends DB{
 
     public function add($data)
     {   
-       // $data = [$name,$email,$password,$confirm_password,$specialization,$mobile,$address,$description];
         $error=[];
         $name=$data[0];
         $email=$data[1];
@@ -53,8 +52,8 @@ class Doctor extends DB{
         $confirm_password=$data[3];
         $specialization=$data[4];
         $phone=$data[5];
-        $address=nl2br($data[6]);
-        $description=nl2br($data[7]);
+        $address=$data[6];
+        $description=$data[7];
         if($password ==$confirm_password)
         {
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
