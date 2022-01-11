@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Edit Case';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Edit Case';
 	include $inc.'header.php';
@@ -12,6 +14,8 @@
   if(isset($_GET['error']))
 	{
 		$errors = json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);
+    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+    extract($data);
 	}
 ?>
    <div class="login-register" id="register">

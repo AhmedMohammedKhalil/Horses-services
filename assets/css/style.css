@@ -13,6 +13,19 @@ ul {
   padding: 0;
 }
 
+.text-overflow {
+  overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    height: 93px;
+    text-align: justify;
+    font-size: 16px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    padding: 3px;
+
+}
+
 ::-webkit-file-upload-button {
   background:#333536;
   color: white;
@@ -419,7 +432,9 @@ input[type='radio'] {
   -o-border-radius: 0;
 }
 
-.product .box a:hover , .component-details a:hover, .button.make_review:hover{
+.product .box a:hover , .component-details a:hover,
+ .button.make_review:hover , .box_a:hover,
+ #cases .box a:hover{
   background-color: #2196f3;
   color:white;
 }

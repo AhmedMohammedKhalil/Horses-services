@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'All Doctors';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'All Doctors';
 	include $inc.'header.php';

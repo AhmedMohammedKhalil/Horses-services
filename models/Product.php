@@ -112,6 +112,10 @@ class Product extends DB{
         $get = $this->con->prepare("DELETE FROM user_reviews 
         WHERE product_id = $id");
         $get->execute();
+
+        $get = $this->con->prepare("DELETE FROM products 
+        WHERE id = $id");
+        $get->execute();
     
     }
 

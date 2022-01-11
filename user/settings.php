@@ -1,6 +1,7 @@
 <?php
 	ob_start();
 	session_start();
+  $valid = "true";
 	$pageTitle = 'User Settings';
 	include 'init.php';
 	$headerTitle = 'User Settings';
@@ -14,13 +15,16 @@
       <div class="form">
         <div class="content">
             <h2>Settings</h2>
-            <?php if(isset($errors)) {
-										echo '<ul style="width:50%;margin:0 auto">';
-										foreach($errors as $er) {
-											echo "<li style='color:red;text-align:left'>$er</li>";
-										}
-										echo '</ul>';
-						}?>
+            <ol>
+              <?php 
+                if(isset($errors))
+                {
+                  foreach($errors as $e){
+                      echo "<li style='text-align:left;color:red'>".$e."</li>";
+                  }
+                }    
+              ?>
+            </ol>
             <form name="user_edit" method="POST" action="<?php echo $cont."Controller.php?do=editUser" ?>" enctype="multipart/form-data">
               <input class="input" type="text" placeholder="Your Name" name="name" required  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
               <input class="input" type="email" placeholder="Your Email" name="email" required value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['user']['email'];}?>" />

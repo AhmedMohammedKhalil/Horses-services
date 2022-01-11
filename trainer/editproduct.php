@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Edit Product';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Edit Product';
 	include $inc.'header.php';

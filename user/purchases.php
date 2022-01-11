@@ -1,6 +1,8 @@
 <?php
 	ob_start();
 	session_start();
+  $valid = "true";
+
 	$pageTitle = 'User Purchases';
 	include 'init.php';
 	$headerTitle = 'Purchases Login';

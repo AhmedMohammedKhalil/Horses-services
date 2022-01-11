@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Dashboard';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Dashboard';
 	include $inc.'header.php';

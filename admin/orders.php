@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'All Orders';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'All Orders';
 	include $inc.'header.php';

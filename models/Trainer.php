@@ -49,15 +49,14 @@ class Trainer extends DB{
         $confirm_password=$data[3];
         $specialization=$data[4];
         $phone=$data[5];
-        $address=nl2br($data[6]);
-        $description=nl2br($data[7]);
-        $recommendation=nl2br($data[8]);
+        $address=$data[6];
+        $description=$data[7];
         if($password ==$confirm_password)
         {
             $password_hash = password_hash($password, PASSWORD_BCRYPT);
             $encoded= json_encode(['email'=>$email ,'name'=>$name ,
              'specialization'=>$specialization,'phone'=>$phone ,'address'=>$address
-             ,'description'=>$description ,'recommendation'=>$recommendation
+             ,'description'=>$description
             ]);
             $query = $this->con->prepare("SELECT * FROM trainers WHERE email=:email");
             $query->bindParam("email", $email, PDO::PARAM_STR);
@@ -72,7 +71,7 @@ class Trainer extends DB{
             {
                 if ($query->rowCount() == 0) {
                    
-                    $query = $this->con->prepare("INSERT INTO trainers(name,email,password,specialization,phone,address,description,recommendation) VALUES (:name,:email,:password_hash,:specialization,:phone,:address,:description,:recommendation)");
+                    $query = $this->con->prepare("INSERT INTO trainers(name,email,password,specialization,phone,address,description) VALUES (:name,:email,:password_hash,:specialization,:phone,:address,:description)");
                     $query->bindParam("name", $name, PDO::PARAM_STR);
                     $query->bindParam("email", $email, PDO::PARAM_STR);
                     $query->bindParam("password_hash", $password_hash, PDO::PARAM_STR);
@@ -80,7 +79,6 @@ class Trainer extends DB{
                     $query->bindParam("phone", $phone, PDO::PARAM_STR);
                     $query->bindParam("address", $address, PDO::PARAM_STR);
                     $query->bindParam("description", $description, PDO::PARAM_STR); 
-                    $query->bindParam("recommendation", $recommendation, PDO::PARAM_STR);
                     $insert_result = $query->execute();
                     if($insert_result){
                         $query = $this->con->prepare("SELECT * FROM trainers WHERE email=:email");

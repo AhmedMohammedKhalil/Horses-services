@@ -27,7 +27,7 @@
             <?php }?>
             <div class="content">
               <h3><?php echo $d['name'] ?></h3>
-              <p><?php echo $d['description'] ?></p>
+              <p class="text-overflow"><?php echo nl2br($d['description']) ?></p>
             </div>
             <div class="info">
            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showDoctor&id='.$d['id'].'">Read more</a>' ?>
@@ -55,7 +55,7 @@
               <?php }?>
             <div class="content">
               <h3><?php echo $t['name'] ?></h3>
-              <p><?php echo $t['description'] ?></p>
+              <p class="text-overflow"><?php echo nl2br($t['description']) ?></p>
             </div>
             <div class="info">
             <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showTrainer&id='.$t['id'].'">Read more</a>' ?>

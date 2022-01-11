@@ -1,10 +1,13 @@
 <?php
 	ob_start();
   session_start();
+  
 	$pageTitle = 'User Register';
 	include 'init.php';
   include $inc."header.php";
-
+  if(isset($_SESSION['username'])) {
+		header("location: {$app}");
+	}
   if(isset($_GET['error']))
 	{
 	  $errors= json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);
@@ -22,7 +25,7 @@
                 if(isset($errors))
                 {
                   foreach($errors as $e){
-                      echo "<li style='list-style-type:type; text-align:left;color:red'>".$e."</li>";
+                      echo "<li style='text-align:left;color:red'>".$e."</li>";
                   }
                 }    
               ?>

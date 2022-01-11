@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Trainer Products';
+    $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Trainer Products';
 	include $inc.'header.php';
@@ -12,11 +14,17 @@
 	}
 ?>
 <div class="product" id="products">
-      <h2 class="title">products</h2>
     <div  style="display: flex;">
-            <a class="box_a" href="<?php echo $cont."Controller.php?do=addProduct" ?>">Add Products</a>         
+                    <a class="box_a" href="<?php echo $cont."Controller.php?do=addProduct" ?>">Add Products</a>         
     </div>
-    <div class="container">
+        <?php if($products) {
+                echo '      <h2 class="title">Products</h2>        ';
+        }else {
+                echo '      <h2 class="title">Not Found Products</h2>        ';
+        }
+                ?>    
+    
+    <div class="container" style="min-height: 80px;">
         <?php foreach($products as $p)  { ?>
 
         <div class="box" style="text-align: center;">
@@ -29,7 +37,7 @@
             </div>
             <h4><?php echo $p['name'] ?></h4>
             <h4><?php echo $p['price'] ?> KD</h4>
-            <div style="display: flex;">
+            <div style="display: flex">
                 <?php   echo '<a href="'.$cont.'Controller.php?do=showProduct&id='.$p['id'].'">Show</a>' ?>
                 <?php   echo '<a href="'.$cont.'Controller.php?do=editProduct&id='.$p['id'].'">Edit</a>' ?>
                 <?php   echo '<a href="'.$cont.'Controller.php?do=deleteProduct&id='.$p['id'].'">Delete</a>' ?>

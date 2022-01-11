@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Change Password';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Change Password';
 	include $inc.'header.php';
@@ -14,13 +16,16 @@
       <div class="form">
         <div class="content">
             <h2>Change Password</h2>
-            <?php if(isset($errors)) {
-										echo '<ul style="width:50%;margin:0 auto">';
-										foreach($errors as $er) {
-											echo "<li style='color:red;text-align:left'>$er</li>";
-										}
-										echo '</ul>';
-						}?>
+			<ol>
+            <?php 
+            if(isset($errors))
+            {
+              foreach($errors as $e){
+                  echo "<li style='list-style-type:type; text-align:left;color:red'>".$e."</li>";
+              }
+            }    
+            ?>
+            </ol>
             <form name="changepass" method="POST" action="<?php echo $cont."Controller.php?do=DoctorchangePass" ?>">
                 <div>
                     <input type="password" class="input" name="password" id="password" placeholder="Enter Password" required="required" />

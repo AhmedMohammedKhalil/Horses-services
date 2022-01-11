@@ -55,13 +55,7 @@ class AdminController {
 
     public function adminProfile()
     {
-        include_once('../models/Admin.php');
-        
-        $admin_id=$_SESSION['admin']['id'];
-        $admin = new Admin();  
-        $admin = $admin->getAdmin('*','admins','id',"id ={$admin_id}");
-        $data =  json_encode(['admin' => $admin]);
-        header("location: ../admin/profile.php?data={$data}");
+        header("location: ../admin/profile.php");
     }
     public function adminSettings ($adminroute = '../admin/') {
         header('Location: '.$adminroute.'settings.php');

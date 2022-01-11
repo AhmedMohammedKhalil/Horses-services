@@ -2,15 +2,11 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Doctor Profile';
+	$valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Doctor Profile';
 	include $inc.'header.php';
-	if(isset($_GET['data']))
-	{
-		$data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
-		extract($data);
-		$doctor=$doctor[0];
-	}
 ?>
 <div class="component-details" >
       <div class="details">
@@ -20,15 +16,15 @@
 			<img src="<?php echo $files.'doctors/'.$_SESSION['doctor']['id'].'/'.$_SESSION['doctor']['photo'] ?>" alt="">
 		<?php }?>
           <div class="content">
-              <h2><?php echo $doctor['name'] ?></h2>
-              <h2><?php echo $doctor['email'] ?></h2>
-			  <h2><?php echo $doctor['specialization'] ?></h2>
-              <h2><?php echo $doctor['phone'] ?></h2>
-              <p><?php echo $doctor['description'] ?></p>
-              <p><?php echo $doctor['address'] ?></p>
-              <div style="display: flex">
-                <a href='<?php echo $cont."Controller.php?do=showDoctorSettings" ?>' style="margin-right: 10px;">Edit</a>
-                <a href='<?php echo $cont."Controller.php?do=showDoctorChangePassword" ?>'>Change Password</a>
+              <h2><?php echo $_SESSION['doctor']['name'] ?></h2>
+              <h2><?php echo $_SESSION['doctor']['email'] ?></h2>
+			  <h2><?php echo $_SESSION['doctor']['specialization'] ?></h2>
+              <h2><?php echo $_SESSION['doctor']['phone'] ?></h2>
+              <p><?php echo nl2br($_SESSION['doctor']['description']) ?></p>
+              <p><?php echo nl2br($_SESSION['doctor']['address']) ?></p>
+              <div style="display: flex;justify-content:center">
+                <a href='<?php echo $cont."Controller.php?do=showDoctorSettings" ?>' style="margin: 15px;">Edit</a>
+                <a href='<?php echo $cont."Controller.php?do=showDoctorChangePassword" ?>' style="margin: 15px;">Change Password</a>
               </div>
           </div>
       </div>

@@ -142,13 +142,7 @@ class UserController {
     }
     public function userProfile()
     {
-        include_once('../models/User.php');
-        
-        $user_id=$_SESSION['user']['id'];
-        $user = new User();  
-        $user = $user->getUser('*','users','id',"id ={$user_id}");
-        $data =  json_encode(['user' => $user]);
-        header("location: ../user/profile.php?data={$data}");
+        header("location: ../user/profile.php");
     }
     public function userSettings ($userroute = '../user/') {
         header('Location: '.$userroute.'settings.php');

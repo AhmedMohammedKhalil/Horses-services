@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Admin Settings';
+	$valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Admin Settings';
 	include $inc.'header.php';

@@ -67,10 +67,9 @@ class TrainerController {
                 $phone = trim($_POST['phone']);
                 $address = trim($_POST['address']);
                 $description = trim($_POST['description']);
-                $recommendation = trim($_POST['recommendation']);
                 $password = trim($_POST['password']);
                 $confirm_password = trim($_POST['confirm_password']);
-                $encoded= json_encode(['email'=>$email ,'name'=>$name,'specialization'=>$specialization ,'phone'=>$phone , 'address'=>$address,'description'=>$description,'recommendation'=>$recommendation]);
+                $encoded= json_encode(['email'=>$email ,'name'=>$name,'specialization'=>$specialization ,'phone'=>$phone , 'address'=>$address,'description'=>$description]);
                 $error=[];
                 if (empty($name)) {
                     array_push($error,"name required");
@@ -84,14 +83,14 @@ class TrainerController {
                 if (empty($phone) || strlen($phone)<6 || !is_numeric($phone)) {
                     if(empty($phone))
                     {
-                        array_push($error,"mobile required");
+                        array_push($error,"phone required");
                     }
                     else if(strlen($phone)<6)
                     {
-                        array_push($error,"Must be 6 digit");
+                        array_push($error,"phone Must be 6 digit");
                     }
                     else{
-                        array_push($error,"mobile number contains numbers only");
+                        array_push($error,"phone must contains numbers only");
                     }
                 } 
                 if (empty($password)) {
@@ -118,7 +117,7 @@ class TrainerController {
                     header("location: ../trainer/register.php?error={$error}&data={$encoded} " );
                     exit();
                 }
-                $data = [$name,$email,$password,$confirm_password,$specialization,$phone,$address,$description,$recommendation];
+                $data = [$name,$email,$password,$confirm_password,$specialization,$phone,$address,$description];
                 $trainer = new Trainer();
                 $trainer->add($data);
 
@@ -129,13 +128,7 @@ class TrainerController {
 
     public function trainerProfile()
     {
-        include_once('../models/Trainer.php');
-        
-        $trainer_id=$_SESSION['trainer']['id'];
-        $trainer = new Trainer();  
-        $trainer = $trainer->getTrainer('*','trainers','id',"id ={$trainer_id}");
-        $data =  json_encode(['trainer' => $trainer]);
-        header("location: ../trainer/profile.php?data={$data}");
+        header("location: ../trainer/profile.php");
     }
     public function trainerSettings ($trainerroute = '../trainer/')
     {
@@ -558,6 +551,10 @@ class TrainerController {
         include_once('../models/Product.php');
         $product = new Product();
         $product->delete($id);
+        $dirname="../files/products/{$id}";
+        array_map("unlink", glob("$dirname/*"));
+        array_map("rmdir", glob("$dirname/*"));
+        rmdir($dirname);
         $this->getProducts();
     }
 }

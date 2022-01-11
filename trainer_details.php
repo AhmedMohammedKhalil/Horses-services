@@ -18,7 +18,7 @@
             <h2><?php echo $trainer['name'] ?></h2>
             <h2><?php echo $trainer['address'] ?></h2>
             <h2><?php echo $trainer['phone'] ?></h2>
-            <p><?php echo $trainer['description'] ?></p>
+            <p><?php echo nl2br($trainer['description']) ?></p>
         </div>
       </div>
     </div>
@@ -39,8 +39,8 @@
               <h3><?php echo $w['job_title'] ?></h3>
               <h4><?php echo $w['placement'] ?></h4>
               <h4><?php echo $w['job_estimation'] ?></h4>
-              <p>
-              <?php echo $w['details'] ?> 
+              <p class="text-overflow">
+              <?php echo nl2br($w['details']) ?> 
               </p>
             </div>
           </div>

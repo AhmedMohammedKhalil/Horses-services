@@ -44,7 +44,7 @@
           <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />
           <div class="content">
             <h3><?php echo $d['name'] ?></h3>
-            <p><?php echo $d['description'] ?></p>
+            <p class="text-overflow"><?php echo nl2br($d['description']) ?></p>
           </div>
           <div class="info">
         <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showDoctor&id='.$d['id'].'">Read more</a>' ?>
@@ -68,7 +68,7 @@
             <img src="<?php echo $imgs ?>horse-trainer.png" alt="" />
             <div class="content">
               <h3><?php echo $t['name'] ?></h3>
-              <p><?php echo $t['description'] ?></p>
+              <p class="text-overflow"><?php echo nl2br($t['description']) ?></p>
             </div>
             <div class="info">
             <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showTrainer&id='.$t['id'].'">Read more</a>' ?>
@@ -93,6 +93,7 @@
               <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
             </div>
             <h4><?php echo $p['name'] ?></h4>
+            <h4><?php echo $p['price'] ?></h4>
             <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showProduct&id='.$t['id'].'">Read more</a>' ?>
           </div>
           <?php }?>

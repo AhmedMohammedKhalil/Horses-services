@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Add Case';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Add Case';
 	include $inc.'header.php';
@@ -27,9 +29,9 @@
             ?>
             </ol>
             <form name="addCase" method="POST" action="<?php echo $cont."Controller.php?do=storeCase"?>">
-              <input class="input" type="text" placeholder="Enter Title" name="title" value="<?php if(isset($_GET['error'])){echo $title ;}?>"/>
-              <textarea class="input" placeholder="Enter Details" name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
-              <textarea class="input" placeholder="Enter Treatment" name="treatment"><?php if(isset($_GET['error'])){echo $treament ;}?></textarea>
+              <input class="input" type="text" placeholder="Enter Title" name="title" required value="<?php if(isset($_GET['error'])){echo $title ;}?>"/>
+              <textarea class="input" placeholder="Enter Details" required name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
+              <textarea class="input" placeholder="Enter Treatment" required name="treatment"><?php if(isset($_GET['error'])){echo $treament ;}?></textarea>
               <input name="add_case" class="button" type="submit" value="add" />
             </form>
         </div>

@@ -1,6 +1,7 @@
 <?php
 	ob_start();
 	session_start();
+	$valid = "true";
 	$pageTitle = 'User Profile';
 	include 'init.php';
 	$headerTitle = 'User Profile';
@@ -19,9 +20,9 @@
 			  <h2><?php echo $_SESSION['user']['phone'] ?></h2>
               <p><?php echo nl2br($_SESSION['user']['address']) ?></p>
 
-              <div style="display: flex">
-                <a href='<?php echo $cont."Controller.php?do=showUserSettings" ?>' style="margin-right: 10px;">Edit</a>
-                <a href='<?php echo $cont."Controller.php?do=showUserChangePassword" ?>'>Change Password</a>
+              <div style="display: flex;justify-content:center">
+                <a href='<?php echo $cont."Controller.php?do=showUserSettings" ?>' style="margin: 15px;">Edit</a>
+                <a href='<?php echo $cont."Controller.php?do=showUserChangePassword" ?>' style="margin: 15px;">Change Password</a>
               </div>
           </div>
       </div>

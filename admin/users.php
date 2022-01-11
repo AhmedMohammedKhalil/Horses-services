@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'All Users';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'All Users';
 	include $inc.'header.php';

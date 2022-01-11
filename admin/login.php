@@ -7,6 +7,9 @@
 	include 'init.php';
 	$headerTitle = 'Admin Login';
     include $inc.'header.php';
+	if(isset($_SESSION['username'])) {
+		header("location: {$app}");
+	}
 	if(isset($_GET['error']))
 	{
 	    $errors= json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);

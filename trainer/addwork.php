@@ -2,6 +2,8 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Add Work';
+  $valid="true";
+
 	include 'init.php';
 	$headerTitle = 'Add Work';
 	include $inc.'header.php';

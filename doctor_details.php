@@ -21,8 +21,8 @@
             <h2><?php echo $doctor['name'] ?></h2>
             <h2><?php echo $doctor['specialization'] ?></h2>
             <h2><?php echo $doctor['phone'] ?></h2>
-            <p><?php echo $doctor['description'] ?></p>
-            <p><?php echo $doctor['address'] ?></p>
+            <p><?php echo nl2br($doctor['description']) ?></p>
+            <p><?php echo nl2br($doctor['address']) ?></p>
         </div>
       </div>
     </div>
@@ -36,10 +36,10 @@
             <div class="text">
               <h3><?php echo $c['title'] ?></h3>
               <p>
-              <?php echo $c['details'] ?>
+              <?php echo nl2br($c['details']) ?>
               </p>
               <p>
-              <?php echo $c['treatment'] ?> 
+              <?php echo nl2br($c['treatment']) ?> 
               </p>
             </div>
           </div>

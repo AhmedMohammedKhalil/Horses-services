@@ -2,6 +2,7 @@
 	ob_start();
 	session_start();
 	$pageTitle = 'Add Product';
+  $valid="true";
 	include 'init.php';
 	$headerTitle = 'Add Product';
 	include $inc.'header.php';

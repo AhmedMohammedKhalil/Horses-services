@@ -128,13 +128,7 @@ class DoctorController {
 
     public function doctorProfile()
     {
-        include_once('../models/Doctor.php');
-        
-        $doctor_id=$_SESSION['doctor']['id'];
-        $doctor = new Doctor();  
-        $doctor = $doctor->getDoctor('*','doctors','id',"id ={$doctor_id}");
-        $data =  json_encode(['doctor' => $doctor]);
-        header("location: ../doctor/profile.php?data={$data}");
+        header("location: ../doctor/profile.php");
     }
     public function doctorSettings ($docotorroute = '../doctor/') {
         header('Location: '.$docotorroute.'settings.php');
@@ -347,7 +341,6 @@ class DoctorController {
                 $title=trim($_POST['title']);
                 $details = trim($_POST['details']);
                 $treatment = trim($_POST['treatment']);
-                $doctor_id=$_SESSION['doctor']['id']; 
                 $case_id= trim($_POST['case_id']);
                 $encoded= json_encode(['title'=>$title ,'details'=>$details,'treatment'=>$treatment]);
                 $error=[];

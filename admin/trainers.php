@@ -4,6 +4,8 @@
 	$pageTitle = 'All Trainers';
 	include 'init.php';
 	$headerTitle = 'All Trainers';
+  $valid="true";
+
 	include $inc.'header.php';
 	if(isset($_GET['trainers']))
 	{
