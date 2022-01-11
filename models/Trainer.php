@@ -133,4 +133,28 @@ class Trainer extends DB{
 		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
 		return $rows;
 	}
+    public function update($trainer_id,$data,$photoName) 
+    {
+        extract($data);
+        $query = $this->con->prepare("UPDATE trainers SET name=:name , email = :email , photo =:photoName, specialization =:specialization,phone =:phone ,address =:address ,description=:description WHERE id={$trainer_id}");
+        $query->bindParam("name", $name, PDO::PARAM_STR);
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->bindParam("photoName", $photoName, PDO::PARAM_STR);
+        $query->bindParam("specialization", $specialization, PDO::PARAM_STR);
+        $query->bindParam("phone", $phone, PDO::PARAM_STR);
+        $query->bindParam("address", $address, PDO::PARAM_STR);
+        $query->bindParam("description", $description, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
+
+    public function changePassword($trainer_id,$data) 
+    {
+        extract($data);
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $query = $this->con->prepare("UPDATE trainers SET password=:hash WHERE id={$trainer_id}");
+        $query->bindParam("hash", $hash, PDO::PARAM_STR);
+        $successed = $query->execute();
+        return $successed;
+    }
 }

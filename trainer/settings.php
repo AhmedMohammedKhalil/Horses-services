@@ -1,9 +1,9 @@
 <?php
 	ob_start();
 	session_start();
-	$pageTitle = 'User Settings';
+	$pageTitle = 'Trainer Settings';
 	include 'init.php';
-	$headerTitle = 'User Settings';
+	$headerTitle = 'Trainer Settings';
 	include $inc.'header.php';
 	if(isset($_GET['errors'])) {
 		$errors = json_decode($_GET['errors'],JSON_OBJECT_AS_ARRAY);
@@ -21,16 +21,15 @@
 										}
 										echo '</ul>';
 						}?>
-            <form name="user_edit" method="POST" action="<?php echo $cont."Controller.php?do=editUser" ?>" enctype="multipart/form-data">
-            <input class="input" type="text" placeholder="Your Name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
-              <input class="input" type="email" placeholder="Your Email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['user']['email'];}?>" />
-              <?php if(isset($_GET['error']) && isset($email_error))
-              {
-                  echo "<span style='color:red'>".ucwords($email_error) ."</span>";
-              } 
-              ?>
-                <input type="file" name="photo" id="photo" required="required" accept="image/jpg,image/jpeg,image/png"/>
-              <input class="button" name="userEdit" type="submit" value="Save Changes" />
+            <form name="doctor_edit" method="POST" action="<?php echo $cont."Controller.php?do=editTrainer" ?>" enctype="multipart/form-data">
+              <input class="input" type="text" placeholder="Your Name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
+              <input class="input" type="email" placeholder="Your Email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['trainer']['email'];}?>" />
+              <input class="input" type="text" placeholder="Your Specialization" name="specialization" value="<?php if(isset($errors)) {echo $data['specialization']; } else { echo $_SESSION['trainer']['specialization'];}?>"/>
+              <input class="input" type="text" placeholder="Your Phone" name="phone" value="<?php if(isset($errors)) {echo $data['phone']; } else { echo $_SESSION['trainer']['phone'];}?>" />
+              <input type="file" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png"/>
+              <textarea class="input" placeholder="Your Address" name="address"><?php if(isset($errors)) {echo $data['address']; } else { echo $_SESSION['trainer']['address'];}?></textarea>
+              <textarea class="input" placeholder="Tell Us About You" name="description"><?php if(isset($errors)) {echo $data['description']; } else { echo $_SESSION['trainer']['description'];}?></textarea>
+              <input class="button" name="trainerEdit" type="submit" value="Save Changes" />
             </form>
         </div>
       </div>

@@ -196,6 +196,92 @@ if($action != "") {
         $trainer = new TrainerController();
         $trainer->register();
     }
+
+    if($action == 'showTrainerProfile') {
+        $trainer = new TrainerController();
+        $trainer->trainerProfile();
+    }
+    if($action == 'showTrainerSettings') {
+        $trainer = new TrainerController();
+        $trainer->trainerSettings();
+    }
+    if($action=='editTrainer')
+    {
+        $trainer = new TrainerController();
+        $trainer->editTrainer();
+    }
+
+    if($action == "showTrainerChangePassword")
+    {   
+        $trainer = new TrainerController();
+        $trainer->showChangePassword();
+    }
+
+    if($action == "TrainerchangePass") {
+        $trainer = new TrainerController();
+        $trainer->changePassword();
+    }
+    //------------------previouswork------------------------------
+    
+    if($action == "showWorks") {
+        $trainer = new TrainerController();
+        $trainer->getWorks();
+    }
+    
+    if($action == "addWork") {
+        $trainer = new TrainerController();
+        $trainer->addWork();
+    }
+    if($action == "storeWork") {
+        $trainer = new TrainerController();
+        $trainer->storeWork();
+    }
+
+    if($action == 'editWork') {
+        $id = $_GET['id'];
+        $trainer = new TrainerController();
+        $trainer->editWork($id);
+    }
+    if($action == "updateWork") {
+        $trainer = new TrainerController();
+        $trainer->updateWork();
+    }
+
+    if($action == 'deleteWork') {
+        $id = $_GET['id'];
+        $trainer = new TrainerController();
+        $trainer->deleteWork($id);
+    }
+    //------------------------product routes---------------------
+    if($action == "showProducts") {
+        $trainer = new TrainerController();
+        $trainer->getProducts();
+    }
+    
+    if($action == "addProduct") {
+        $trainer = new TrainerController();
+        $trainer->addProduct();
+    }
+    if($action == "storeProduct") {
+        $trainer = new TrainerController();
+        $trainer->storeProduct();
+    }
+
+    if($action == 'editProduct') {
+        $id = $_GET['id'];
+        $trainer = new TrainerController();
+        $trainer->editProduct($id);
+    }
+    if($action == "updateProduct") {
+        $trainer = new TrainerController();
+        $trainer->updateProduct();
+    }
+
+    if($action == 'deleteProduct') {
+        $id = $_GET['id'];
+        $trainer = new TrainerController();
+        $trainer->deleteProduct($id);
+    }
     //home routes
     if($action == 'showDoctor') {
         $id = $_GET['id'];

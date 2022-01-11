@@ -40,7 +40,7 @@ class HomeController {
         $products = new Product();
 
         $trainer = $trainer->getTrainer('*','trainers','id',"id ={$id}");
-        $works = $works->getTrainerWork('*','previous_works','id',"trainer_id ={$id}");
+        $works = $works->getTrainerWorks('*','previous_works','id',"trainer_id ={$id}");
         $products = $products->getTrainerProducts('products.*','products ,trainer_products','products.id',"products.id = trainer_products.product_id AND trainer_products.trainer_id ={$id}");
 
         $data =  json_encode(['trainer' => $trainer,'previous_works' => $works ,'products'=>$products]);
