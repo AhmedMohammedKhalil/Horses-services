@@ -282,4 +282,32 @@ class UserController {
         }
         
     }
+
+
+    public function makeReview() {
+        include_once('../models/Review.php');
+        if($_SERVER['REQUEST_METHOD'] == 'POST') 
+        {  if(isset($_POST['make_review'])) 
+            {
+                
+                $user_id = $_SESSION['user']['id'];
+                $product_id = trim($_POST['id']);
+                $review = trim($_POST['review']);
+
+                $data = [$review,$user_id,$product_id];
+
+                $reviewModel = new Review();
+                $review = $reviewModel->getReview($user_id,$product_id);
+                
+                if(count($review) > 0) {
+                    $success = $reviewModel->update($data);
+                } else {
+                    $success = $reviewModel->add($data);
+                }
+                header("location: Controller.php?do=showProduct&id={$product_id}");
+                
+            }
+        }
+
+    }
 }

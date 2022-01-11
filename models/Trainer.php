@@ -133,4 +133,12 @@ class Trainer extends DB{
 		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
 		return $rows;
 	}
+
+    public function count() {
+        $statment = $this->con->prepare("SELECT count(*) as count FROM trainers");
+		$statment->execute();
+		$rows = $statment->fetch(PDO::FETCH_ASSOC);
+        $count = $rows['count'];
+		return $count;
+    }
 }

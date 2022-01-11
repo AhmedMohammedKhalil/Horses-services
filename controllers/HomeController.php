@@ -19,7 +19,7 @@ class HomeController {
         include_once('../models/Doctor.php');
         include_once('../models/Cases.php');
 
-        $doctor = new Doctor();  //getDoctorsCases
+        $doctor = new Doctor();  
         $cases = new Cases();
 
         $doctor = $doctor->getDoctor('*','doctors','id',"id ={$id}");
@@ -35,7 +35,7 @@ class HomeController {
         include_once('../models/PreviousWork.php');
         include_once('../models/Product.php');
 
-        $trainer = new Trainer();  //getDoctorsCases
+        $trainer = new Trainer();  
         $works = new PreviousWork();
         $products = new Product();
 
@@ -51,10 +51,11 @@ class HomeController {
     {
         include_once('../models/Product.php');
 
-        $product = new Product();  //getDoctorsCases
+        $productModel = new Product();  
 
-        $product = $product->getProduct('*','products','id',"id ={$id}");
-        $data =  json_encode(['product' => $product]);
+        $product = $productModel->getProduct('*','products','id',"id ={$id}");
+        $reviews = $productModel->getReviews($id);
+        $data =  json_encode(['product' => $product,'reviews' => $reviews]);
         header("location: ../product_details.php?data={$data}");
     }
     

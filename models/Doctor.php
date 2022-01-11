@@ -161,4 +161,12 @@ class Doctor extends DB{
         $successed = $query->execute();
         return $successed;
     }
+
+    public function count() {
+        $statment = $this->con->prepare("SELECT count(*) as count FROM doctors");
+		$statment->execute();
+		$rows = $statment->fetch(PDO::FETCH_ASSOC);
+        $count = $rows['count'];
+		return $count;
+    }
 }

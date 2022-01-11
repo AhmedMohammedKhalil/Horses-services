@@ -145,5 +145,77 @@ class AdminController {
         }
         
     }
+
+
+    public function dashboard() {
+        include_once('../models/Doctor.php');
+        include_once('../models/Product.php');
+        include_once('../models/User.php');
+        include_once('../models/Trainer.php');
+        include_once('../models/UserOrder.php');
+        $doctor = new Doctor();
+        $doctorCount = $doctor->count();
+        $product = new Product();
+        $productCount = $product->count();
+        $trainer = new Trainer();
+        $trainerCount = $trainer->count();
+        $user = new User();
+        $userCount = $user->count();
+        $order = new UserOrder();
+        $orderCount = $order->count();
+
+        $data = [
+            'doctorCount' => $doctorCount,
+            'trainerCount' => $trainerCount,
+            'userCount' => $userCount,
+            'productCount' => $productCount,
+            'orderCount' => $orderCount,
+        ];
+        $encoded = json_encode($data);
+        header('location: ../admin/dashboard.php?data='.$encoded);
+        
+    } 
+
+    public function adminShowDoctors() {
+        include_once('../models/Doctor.php');
+        $doctor = new Doctor();
+        $doctors = $doctor->getDoctors('*','doctors','id');
+        $encoded = json_encode($doctors);
+        header('location: ../admin/doctors.php?doctors='.$encoded);
+
+    }
+    public function adminShowTrainers() {
+        include_once('../models/Trainer.php');
+        $trainer = new Trainer();
+        $trainers = $trainer->getTrainers('*','trainers','id');
+        $encoded = json_encode($trainers);
+        header('location: ../admin/trainers.php?trainers='.$encoded);
+
+    }
+    public function adminShowUsers() {
+        include_once('../models/User.php');
+        $user = new User();
+        $users = $user->getUsers('*','users','id');
+        $encoded = json_encode($users);
+        header('location: ../admin/users.php?users='.$encoded);
+
+    }
+    public function adminShowProducts() {
+        include_once('../models/Product.php');
+        $product = new Product();
+        $products = $product->getAllProducts();
+        $encoded = json_encode($products);
+        header('location: ../admin/products.php?products='.$encoded);
+
+    }
+    public function adminShowOrders() {
+        include_once('../models/UserOrder.php');
+        $order = new UserOrder();
+        $orders = $order->getAllorders();
+        $encoded = json_encode($orders);
+        header('location: ../admin/orders.php?orders='.$encoded);
+
+    }
+
     
 }

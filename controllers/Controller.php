@@ -61,6 +61,11 @@ if($action != "") {
         $user->changePassword();
     }
 
+    if($action == "makeReview") {
+        $user = new UserController();
+        $user->makeReview();
+    }
+
     //-------------------------doctor routes  doctorLogin-------------------------------
 
 
@@ -143,8 +148,8 @@ if($action != "") {
         AdminController::show_login();
     }
     if($action == 'adminLogin') {
-        $trainer = new AdminController();
-        $trainer->login();
+        $admin = new AdminController();
+        $admin->login();
     }
     if($action == 'adminLogout') {
         $admin = new AdminController();
@@ -152,28 +157,51 @@ if($action != "") {
     }
 
     if($action == 'showAdminProfile') {
-        $user = new AdminController();
-        $user->adminProfile();
+        $admin = new AdminController();
+        $admin->adminProfile();
     }
     if($action == 'showAdminSettings') {
-        $user = new AdminController();
-        $user->adminSettings();
+        $admin = new AdminController();
+        $admin->adminSettings();
     }
     if($action=='editAdmin')
     {
-        $user = new AdminController();
-        $user->editAdmin();
+        $admin = new AdminController();
+        $admin->editAdmin();
     }
 
     if($action == "showAdminChangePassword")
     {   
-        $user = new AdminController();
-        $user->showChangePassword();
+        $admin = new AdminController();
+        $admin->showChangePassword();
     }
 
     if($action == "AdminchangePass") {
-        $user = new AdminController();
-        $user->changePassword();
+        $admin = new AdminController();
+        $admin->changePassword();
+    }
+    if ($action == "dashboard") {
+        $admin = new AdminController();
+        $admin->dashboard();
+    }
+    if ($action == "adminShowDoctors") {
+        $admin = new AdminController();
+        $admin->adminShowDoctors();
+    }
+    if ($action == "adminShowTrainers") {
+        $admin = new AdminController();
+        $admin->adminShowTrainers();
+    }
+    if ($action == "adminShowUsers") {
+        $admin = new AdminController();
+        $admin->adminShowUsers();
+    }
+    if ($action == "adminShowProducts") {
+        $admin = new AdminController();
+        $admin->adminShowProducts();
+    }if ($action == "adminShowOrders") {
+        $admin = new AdminController();
+        $admin->adminShowOrders();
     }
 
 

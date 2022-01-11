@@ -126,4 +126,21 @@ class User {
         $successed = $query->execute();
         return $successed;
     }
+
+    public function count() {
+        $statment = $this->con->prepare("SELECT count(*) as count FROM users");
+		$statment->execute();
+		$rows = $statment->fetch(PDO::FETCH_ASSOC);
+        $count = $rows['count'];
+		return $count;
+    }
+
+    public function getUsers($select, $table, $order)
+    {
+    
+        $statment = $this->con->prepare("SELECT $select FROM $table  ORDER BY $order DESC");
+		$statment->execute();
+		$rows = $statment->fetchAll(PDO::FETCH_ASSOC);
+		return $rows;
+	}
 }

@@ -50,7 +50,7 @@
     </div>
     <div class="product" id="products">
         <?php 
-            if($previous_works)
+            if($products)
                 echo '<h2 class="title">products</h2>';
             else 
                 echo '<h2 class="title" style="text-decoration:none !important;">products Not Found </h2>';

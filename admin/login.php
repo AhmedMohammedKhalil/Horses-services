@@ -32,7 +32,6 @@
 						echo "<span style='color:red'>{$password_error}</span>";
 				} 
 				?>
-				<span>If you don't have account <a href="<?php echo $cont."Controller.php?do=showadminRegister"  ?>">Register Now</a></span>
 				<input class="button" type="submit"  name="login" value="login" />
             </form>
 			</div>
