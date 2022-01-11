@@ -5,9 +5,10 @@
 	include 'init.php';
 	$headerTitle = 'Add Case';
 	include $inc.'header.php';
-	if(isset($_GET['data']))
+	if(isset($_GET['error']))
 	{
 		$data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+		$errors = json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);
 		extract($data);
 	}
 ?>

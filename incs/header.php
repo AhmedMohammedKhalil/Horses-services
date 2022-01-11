@@ -51,6 +51,12 @@
                 <a href="<?php  echo $cont."Controller.php?do=showTrainerProfile"  ?>"><?php echo $_SESSION['username']  ?></a>
             </li>
             <li>
+            <a href="<?php  echo $cont."Controller.php?do=showProducts"  ?>">My Products</a>
+            </li>
+            <li>
+            <a href="<?php  echo $cont."Controller.php?do=showWorks"  ?>">My Work</a>
+            </li>
+            <li>
               <a href="<?php echo $cont."Controller.php?do=trainerLogout"   ?>">Logout</a>
             </li>
           <?php } elseif(isset($_SESSION['type']) && $_SESSION['type'] == "doctor") { 
@@ -60,7 +66,7 @@
             </li>
             <li>
             <a href="<?php  echo $cont."Controller.php?do=showCases"  ?>">My Cases</a>
-          </li>
+            </li>
             <li>
               <a href="<?php echo $cont."Controller.php?do=doctorLogout"   ?>">Logout</a>
             </li>

@@ -9,6 +9,10 @@
 	{
 		$case = json_decode($_GET['case'],JSON_OBJECT_AS_ARRAY);
 	}
+  if(isset($_GET['error']))
+	{
+		$errors = json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);
+	}
 ?>
    <div class="login-register" id="register">
       <div class="form">

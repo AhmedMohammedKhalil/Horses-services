@@ -21,7 +21,7 @@
 										}
 										echo '</ul>';
 						}?>
-            <form name="changepass" method="POST" action="<?php echo $cont."Controller.php?do=UserchangePass" ?>">
+            <form name="changepass" method="POST" action="<?php echo $cont."Controller.php?do=TrainerchangePass" ?>">
                 <div>
                     <input type="password" class="input" name="password" id="password" placeholder="Enter Password" required="required" />
                 </div>
