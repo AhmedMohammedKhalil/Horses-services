@@ -24,10 +24,12 @@
 						}?>
             <form name="changepass" method="POST" action="<?php echo $cont."Controller.php?do=AdminchangePass" ?>">
                 <div>
-                    <input type="password" class="input" name="password" id="password" placeholder="Enter Password" required="required" />
+					<label class="label" for="password">Password :</label>
+                    <input type="password" class="input" name="password" id="password" placeholder="Enter Password" title="Enter Password" required="required" />
                 </div>
                 <div>
-                    <input type="password" class="input" name="confirm_passowrd" id="co_password" placeholder="Enter password again" required="required" />
+					<label class="label" for="co_password">Confirm Password :</label>
+                    <input type="password" class="input" name="confirm_passowrd" id="co_password" placeholder="Enter password again" title="Enter password again" required="required" />
                 </div>
               <input class="button" name="change_password" type="submit" value="Save Changes" />
             </form>

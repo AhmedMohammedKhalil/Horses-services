@@ -25,13 +25,15 @@
 			//if($_GET['error'])
 			//	{$_SESSION['error'];}
 			?>
-				<input class="input" type="email" placeholder="Your Email" name="email" value="<?php if(isset($_GET['error'])){echo $email ;}?>" />
+				<label class="label" for="email">Email :</label>
+				<input class="input" type="email" title="Enter Email" placeholder="Your Email" name="email" value="<?php if(isset($_GET['error'])){echo $email ;}?>" />
 				<?php if(isset($_GET['error']) && isset($email_error) && !empty($email_error))
 				{
 						echo "<span style='color:red'>".ucwords($email_error) ."</span>";
 				} 
 				?>
-				<input class="input" type="password" placeholder="Your Password" name="password" />
+				<label class="label" for="email">Password :</label>
+				<input class="input" type="password" title="Enter Password" placeholder="Your Password" name="password" />
 				<?php if(isset($_GET['error'])&& isset($password_error) && !empty($password_error))
 				{
 						echo "<span style='color:red'>{$password_error}</span>";

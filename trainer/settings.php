@@ -27,13 +27,20 @@
             ?>
             </ol>
             <form name="doctor_edit" method="POST" action="<?php echo $cont."Controller.php?do=editTrainer" ?>" enctype="multipart/form-data">
-              <input class="input" type="text" placeholder="Your Name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
-              <input class="input" type="email" placeholder="Your Email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['trainer']['email'];}?>" />
-              <input class="input" type="text" placeholder="Your Specialization" name="specialization" value="<?php if(isset($errors)) {echo $data['specialization']; } else { echo $_SESSION['trainer']['specialization'];}?>"/>
-              <input class="input" type="text" placeholder="Your Phone" name="phone" value="<?php if(isset($errors)) {echo $data['phone']; } else { echo $_SESSION['trainer']['phone'];}?>" />
-              <input type="file" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png"/>
-              <textarea class="input" placeholder="Your Address" name="address"><?php if(isset($errors)) {echo $data['address']; } else { echo $_SESSION['trainer']['address'];}?></textarea>
-              <textarea class="input" placeholder="Tell Us About You" name="description"><?php if(isset($errors)) {echo $data['description']; } else { echo $_SESSION['trainer']['description'];}?></textarea>
+              <label class="label" for="name">Name :</label>
+              <input class="input" type="text" title="Enter Name" placeholder="Your Name" id="name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
+	          	<label class="label" for="email">Email :</label>
+              <input class="input" type="email" title="Enter Email" placeholder="Your Email" id="email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['trainer']['email'];}?>" />
+              <label class="label" for="specialization">Specialization :</label>
+              <input class="input" type="text"  title="Enter Specialization" placeholder="Your Specialization" id="specialization" name="specialization" value="<?php if(isset($errors)) {echo $data['specialization']; } else { echo $_SESSION['trainer']['specialization'];}?>"/>
+              <label class="label" for="phone">Phone :</label> 
+              <input class="input" type="text" title="Enter Phone" placeholder="Your Phone" id="phone" name="phone" value="<?php if(isset($errors)) {echo $data['phone']; } else { echo $_SESSION['trainer']['phone'];}?>" />
+              <label class="label" for="photo">Photo :</label> 
+              <input type="file" name="photo" title="Enter Photo" id="photo" accept="image/jpg,image/jpeg,image/png"/>
+              <label class="label" for="address">Address :</label> 
+              <textarea class="input" title="Enter Address" placeholder="Your Address" id="address" name="address"><?php if(isset($errors)) {echo $data['address']; } else { echo $_SESSION['trainer']['address'];}?></textarea>
+              <label class="label" for="description">Description :</label> 
+              <textarea class="input" title="Enter Description" placeholder="Tell Us About You" id="description" name="description"><?php if(isset($errors)) {echo $data['description']; } else { echo $_SESSION['trainer']['description'];}?></textarea>
               <input class="button" name="trainerEdit" type="submit" value="Save Changes" />
             </form>
         </div>

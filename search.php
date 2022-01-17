@@ -15,7 +15,7 @@
  
     <div class="search" style="min-height: calc(100vh - 243.4px);">
         <form action="<?php echo $cont.'Controller.php?do=makesearch';?>" method="POST">
-            <input type="search" name="search" placeholder="Searching ...." value="<?php if(isset($oldSearch)) echo $oldSearch; ?>" />
+            <input title="Search" type="search" name="search" placeholder="Searching ...." value="<?php if(isset($oldSearch)) echo $oldSearch; ?>" />
             <input type="submit" name="searching" value="Search" />
         </form>
         <?php if(isset($error)){echo "<span style='color:red;text-align:center;display:block;font-size:20px;margin-bottom:10px'>$error</span>";} ?>

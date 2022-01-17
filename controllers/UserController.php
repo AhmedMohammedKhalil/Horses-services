@@ -293,7 +293,7 @@ class UserController {
                 $reviewModel = new Review();
                 $review = $reviewModel->getReview($user_id,$product_id);
                 
-                if(count($review) > 0) {
+                if(!empty($review)) {
                     $success = $reviewModel->update($data);
                 } else {
                     $success = $reviewModel->add($data);

@@ -29,11 +29,21 @@
             ?>
             </ol>
             <form name="addProduct" method="POST" action="<?php echo $cont."Controller.php?do=storeProduct"?>" enctype="multipart/form-data">
-              <input class="input" type="text" required placeholder="Enter Job Title" required name="category" value="<?php if(isset($_GET['error'])){echo $category ;}?>"/>
-              <input class="input" type="text" required placeholder="Enter job estimation" required name="name" value="<?php if(isset($_GET['error'])){echo $name ;}?>"/>
-              <input class="input" type="text" required placeholder="Enter job estimation" required name="price" value="<?php if(isset($_GET['error'])){echo $price ;}?>"/>
-              <input type="file" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png" required/>
-              <textarea class="input" required placeholder="Enter Details" required name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
+
+		      		<label class="label" for="category">Category :</label>
+              <input class="input" title="Enter Category" type="text" required placeholder="Enter Category" required name="category" value="<?php if(isset($_GET['error'])){echo $category ;}?>"/>
+
+		      		<label class="label" for="name">Name :</label>
+              <input class="input" title="enter name" type="text" required placeholder="Enter Name" required name="name" value="<?php if(isset($_GET['error'])){echo $name ;}?>"/>
+
+		      		<label class="label" for="price">Price :</label>
+              <input class="input" title="Enter Price" type="text" required placeholder="Enter Price" required name="price" value="<?php if(isset($_GET['error'])){echo $price ;}?>"/>
+
+		      		<label class="label" for="photo">Photo :</label>
+              <input type="file" title="upload photo" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png" required/>
+
+		      		<label class="label" for="details">Details :</label>
+              <textarea class="input" title="write details" required placeholder="Enter Details" required name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
               <input name="add_product" class="button" type="submit" value="add" />
             </form>
         </div>

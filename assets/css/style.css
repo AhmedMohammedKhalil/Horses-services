@@ -200,6 +200,11 @@ input[type='radio'] {
   background-color: white;
   color: #191919;
 }
+.label{
+  display: inline-flex;
+  width: 393px;
+  border: none;
+}
 
 
 .login-register .form textarea.input {

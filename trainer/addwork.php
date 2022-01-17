@@ -30,10 +30,18 @@
             ?>
             </ol>
             <form name="addWork" method="POST" action="<?php echo $cont."Controller.php?do=storeWork"?>">
-              <input class="input" type="text" required placeholder="Enter Job Title" name="job_title" value="<?php if(isset($_GET['error'])){echo $job_title ;}?>"/>
-              <input class="input" type="text" required placeholder="Enter placement" name="placement" value="<?php if(isset($_GET['error'])){echo $placement ;}?>"/>
-              <input class="input" type="text" required placeholder="Enter job estimation" name="job_estimation" value="<?php if(isset($_GET['error'])){echo $job_estimation ;}?>"/>
-              <textarea class="input" required placeholder="Enter Details" name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
+		      		<label class="label" for="job_title">Job Title :</label>
+              <input class="input" title="Enter job Title" type="text" required placeholder="Enter Job Title" name="job_title" value="<?php if(isset($_GET['error'])){echo $job_title ;}?>"/>
+
+		      		<label class="label" for="placement">Placement :</label>
+              <input class="input" title="Enter Placement"  type="text" required placeholder="Enter placement" name="placement" value="<?php if(isset($_GET['error'])){echo $placement ;}?>"/>
+		      	
+              <label class="label" for="job_estimation">Job Estimation :</label>
+              <input class="input" title="Enter job estimation" type="text" required placeholder="Enter job estimation" name="job_estimation" value="<?php if(isset($_GET['error'])){echo $job_estimation ;}?>"/>
+              
+              <label class="label" for="details">Details :</label>
+              <textarea class="input" title="details" id="details" required placeholder="Enter Details" name="details"><?php if(isset($_GET['error'])){echo $details ;}?></textarea>
+            
               <input name="add_work" class="button" type="submit" value="add" />
             </form>
         </div>

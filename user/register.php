@@ -31,12 +31,18 @@
               ?>
             </ol>
             <form action="<?php echo $cont."Controller.php?do=userRegister" ?>" method="POST">
-              <input class="input" type="text" placeholder="Your Name" name="name" required value="<?php if(isset($_GET['error'])){echo $name ;}?>"/>
-              <input class="input" type="email" placeholder="Your Email" name="email"  value="<?php if(isset($_GET['error'])){echo $email ;}?>" />
-              <input class="input" type="text" placeholder="Your phone" name="phone" value="<?php if(isset($_GET['error'])){echo $phone ;}?>"/>
-              <textarea class="input" type="text" placeholder="Your address" name="address" ><?php if(isset($_GET['error'])){echo $address ;}?></textarea>
-              <input class="input" type="password" placeholder="Your Password" name="password" />
-              <input class="input" type="password" placeholder="Your Password again" name="confirm_password" />
+			      	<label class="label" for="name">Name :</label>
+              <input class="input" type="text" placeholder="Your Name" title="enter name" name="name" required value="<?php if(isset($_GET['error'])){echo $name ;}?>"/>
+			      	<label class="label" for="email">Email :</label>
+              <input class="input" type="email" placeholder="Your Email" title="enter email" name="email"  value="<?php if(isset($_GET['error'])){echo $email ;}?>" />
+			      	<label class="label" for="phone">Phone :</label>
+              <input class="input" type="text" placeholder="Your phone" name="phone" title="enter phone" value="<?php if(isset($_GET['error'])){echo $phone ;}?>"/>
+			      	<label class="label" for="address">Address :</label>
+              <textarea class="input" type="text" placeholder="Your address" name="address" title="enter address" ><?php if(isset($_GET['error'])){echo $address ;}?></textarea>
+			      	<label class="label" for="password">Password :</label>
+              <input class="input" type="password" placeholder="Your Password" title="enter strong password" name="password" />
+			      	<label class="label" for="confirm_password">Confirm Password :</label>
+              <input class="input" type="password" placeholder="Your Password again" title="confirm matched password" name="confirm_password" />
               <span>If you have account <a href="<?php  echo $cont."Controller.php?do=showuserLogin" ?>">Login Now</a></span>
               <input class="button" type="submit" value="register" name="register" />
             </form>
