@@ -12,7 +12,7 @@
     
     
 ?> 
- 
+
     <div class="search" style="min-height: calc(100vh - 243.4px);">
         <form action="<?php echo $cont.'Controller.php?do=makesearch';?>" method="POST">
             <input title="Search" type="search" name="search" placeholder="Searching ...." value="<?php if(isset($oldSearch)) echo $oldSearch; ?>" />
@@ -41,7 +41,7 @@
         <?php foreach($doctors as $d)  { ?>
 
         <div class="box">
-          <img src="<?php echo $imgs?>doctor-image.jpg" alt="" />
+          <img src="<?php echo $imgs?>doctor-image.jpg" alt="doctor photo" />
           <div class="content">
             <h3><?php echo $d['name'] ?></h3>
             <p class="text-overflow"><?php echo nl2br($d['description']) ?></p>
@@ -65,7 +65,7 @@
         <div class="container">
         <?php foreach($trainers as $t)  { ?>
           <div class="box">
-            <img src="<?php echo $imgs ?>horse-trainer.png" alt="" />
+            <img src="<?php echo $imgs ?>horse-trainer.png" alt="trainer photo" />
             <div class="content">
               <h3><?php echo $t['name'] ?></h3>
               <p class="text-overflow"><?php echo nl2br($t['description']) ?></p>
@@ -82,15 +82,15 @@
       <div class="product" id="products">
       <?php 
             if($products)
-                echo '<h2 class="title">Doctors</h2>';
+                echo '<h2 class="title">Products</h2>';
             else 
-                echo '<h2 class="title" style="border:none;">Doctors Not Found </h2>';
+                echo '<h2 class="title" style="border:none;">Products Not Found </h2>';
         ?>
         <div class="container">
         <?php foreach($products as $p)  { ?>
           <div class="box" style="text-align: center;">
             <div class="image">
-              <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
+              <img src="<?php echo $imgs ?>prod-1.jpg" alt="product photo" />
             </div>
             <h4><?php echo $p['name'] ?></h4>
             <h4><?php echo $p['price'] ?></h4>

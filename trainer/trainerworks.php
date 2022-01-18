@@ -27,7 +27,7 @@
         <div class="info" style="min-height:180px">
         <?php foreach($works as $c)  { ?>
           <div class="box">
-            <img src="<?php echo $imgs?>horse-trainer-1.jpg" alt="" />
+            <img src="<?php echo $imgs?>horse-trainer-1.jpg" alt="previous work photo" />
             <div class="text" style="flex: 1;">
               <h3><?php echo $c['job_title'] ?></h3>
               <h4><?php echo $c['placement'] ?></h4>

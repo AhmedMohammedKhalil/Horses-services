@@ -11,9 +11,9 @@
     <div class="component-details" id="trainer">
       <div class="details">
             <?php if($trainer['photo']  == null ) {?>
-                <img src="<?php echo $imgs.'horse-trainer.png'?>" alt="" >
+                <img src="<?php echo $imgs.'horse-trainer.png'?>" alt="trainer photo" >
               <?php }else{ ?>
-                <img src="<?php echo $files.'trainers/'.$trainer['id'].'/'.$trainer['photo'] ?>" alt="">
+                <img src="<?php echo $files.'trainers/'.$trainer['id'].'/'.$trainer['photo'] ?>" alt="trainer photo">
               <?php }?>        <div class="content">
             <h2><?php echo $trainer['name'] ?></h2>
             <h2><?php echo $trainer['address'] ?></h2>
@@ -34,7 +34,7 @@
         <div class="info">
         <?php foreach($previous_works as $w)  { ?>
           <div class="box">
-            <img src="<?php echo $imgs.'horse-trainer.png' ?>" alt="" />
+            <img src="<?php echo $imgs.'horse-trainer.png' ?>" alt="previous work photo" />
             <div class="text">
               <h3><?php echo $w['job_title'] ?></h3>
               <h4><?php echo $w['placement'] ?></h4>
@@ -59,7 +59,7 @@
         <?php foreach($products as $p)  { ?>
           <div class="box" style="text-align: center;">
             <div class="image">
-              <img src="<?php echo $imgs ?>prod-1.jpg" alt="" />
+              <img src="<?php echo $imgs ?>prod-1.jpg" alt="product photo" />
             </div>
             <h4><?php echo $p['name'] ?></h4>
             <h4><?php echo $p['price'] ?> KD</h4>

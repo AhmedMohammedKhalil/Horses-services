@@ -27,15 +27,15 @@
             </ol>
             <form name="user_edit" method="POST" action="<?php echo $cont."Controller.php?do=editUser" ?>" enctype="multipart/form-data">
               <label class="label" for="name">Name :</label>
-              <input class="input" title="enter name" type="text" placeholder="Your Name" name="name" required  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
+              <input class="input" title="enter name" type="text" placeholder="Your Name" name="name" id="name" required  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
               <label class="label" for="email">Email :</label>
-              <input class="input" title="enter email" type="email" placeholder="Your Email" name="email" required value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['user']['email'];}?>" />
+              <input class="input" title="enter email" type="email" placeholder="Your Email" name="email" id="email" required value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['user']['email'];}?>" />
               <label class="label" for="photo">Photo :</label>
               <input type="file"   title="upload photo" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png"/>
               <label class="label" for="phone">Phone :</label>
-              <input class="input" title="enter phone number" type="text" placeholder="Your phone" name="phone" required  value="<?php if(isset($errors)) {echo $data['phone']; } else { echo $_SESSION['user']['phone'];}?>"/>
+              <input class="input" title="enter phone number" type="text" placeholder="Your phone" name="phone" id="phone" required  value="<?php if(isset($errors)) {echo $data['phone']; } else { echo $_SESSION['user']['phone'];}?>"/>
               <label class="label" for="address">Address :</label>
-              <textarea class="input"  title="enter address"  placeholder="Your address" name="address" required><?php if(isset($errors)) {echo $data['address']; } else { echo $_SESSION['user']['address'];}?></textarea>
+              <textarea class="input"  title="enter address"  placeholder="Your address" name="address" id="address" required><?php if(isset($errors)) {echo $data['address']; } else { echo $_SESSION['user']['address'];}?></textarea>
               <input class="button" name="userEdit" type="submit" value="Save Changes" />
             </form>
         </div>

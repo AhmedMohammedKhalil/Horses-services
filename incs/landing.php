@@ -5,7 +5,7 @@
           <p>Here Iam gonna share everything about Horses</p>
         </div>
         <div class="image">
-          <img src="<?php echo $imgs ?>landing-image.png" alt="" />
+          <img src="<?php echo $imgs ?>landing-image.png" alt="landing photo" />
         </div>
       </div>
 </div>

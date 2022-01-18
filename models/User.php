@@ -30,7 +30,7 @@ class User {
                 $_SESSION['user'] = $result;    
                 $_SESSION['username'] = $result['name'];
                 $_SESSION['type'] ="user";
-            
+                unset($_SESSION['CAPTCHA_CODE']);
                 header('location: ../index.php' );
                 exit();
             } else {
@@ -82,6 +82,7 @@ class User {
                         $_SESSION['user'] = $result;    
                         $_SESSION['username'] = $result['name'];
                         $_SESSION['type'] ="user";
+                        unset($_SESSION['CAPTCHA_CODE']);
                     header('location: ../index.php' );
                     exit();
                     }else{

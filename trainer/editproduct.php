@@ -36,20 +36,17 @@
             </ol>
             <form name="editProduct" method="POST" action="<?php echo $cont."Controller.php?do=updateProduct"?>" enctype="multipart/form-data">
               <label class="label" for="category">Category :</label>
-              <input class="input" title="enter category" type="text" required placeholder="Enter Job Category" required name="category" value="<?php if(isset($_GET['error'])){echo $category ;} else {echo $product['category'];}?>"/>
+              <input class="input" title="enter category" type="text" required placeholder="Enter Job Category" required id="category" name="category" value="<?php if(isset($_GET['error'])){echo $category ;} else {echo $product['category'];}?>"/>
               
               <label class="label" for="name">Name :</label>
-              <input class="input" title="enter name" type="text" required placeholder="Enter Name" required name="name" value="<?php if(isset($_GET['error'])){echo $name ;}else {echo $product['name'];}?>"/>
-             
-              <input class="input" type="text" required placeholder="Enter Price" required name="price" value="<?php if(isset($_GET['error'])){echo $price ;}else {echo $product['price'];}?>"/>
-             
+              <input class="input" title="enter name" type="text" required placeholder="Enter Name" required id="name" name="name" value="<?php if(isset($_GET['error'])){echo $name ;}else {echo $product['name'];}?>"/>
+              <label class="label" for="price">Price :</label>
+              <input class="input" type="text" required placeholder="Enter Price" required id="price" name="price" value="<?php if(isset($_GET['error'])){echo $price ;}else {echo $product['price'];}?>"/>
               <label class="label" for="photo">Photo :</label>
               <input type="file" title="Enter Photo" name="photo" id="photo" accept="image/jpg,image/jpeg,image/png" />
-
               <input type="hidden" name="product_id" value="<?php if(isset($_GET['error'])){echo $id ;}else {echo $product['id'];}?>">
-            
               <label class="label" for="details">Details :</label>
-              <textarea class="input" title="Enter Details" required placeholder="Enter Details" required name="details"><?php if(isset($_GET['error'])){echo $details ;}else {echo $product['details'];}?></textarea>
+              <textarea class="input" title="Enter Details" required placeholder="Enter Details" required id="details" name="details"><?php if(isset($_GET['error'])){echo $details ;}else {echo $product['details'];}?></textarea>
               <input name="update_product" class="button" type="submit" value="update" />
             </form>
         </div>

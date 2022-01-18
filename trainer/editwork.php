@@ -34,13 +34,13 @@
               <input type="hidden" name="work_id" value="<?php echo $work['id'];?>">
              
               <label class="label" for="name">Job Title :</label>
-              <input class="input" type="text" placeholder="Enter job_title" title="Enter job title" name="job_title" value="<?php if(isset($_GET['error'])){echo $job_title ;} else{ echo $work['job_title'];}?>"/>
+              <input class="input" type="text" placeholder="Enter job_title" title="Enter job title" id="job_title" name="job_title" value="<?php if(isset($_GET['error'])){echo $job_title ;} else{ echo $work['job_title'];}?>"/>
               <label class="label" for="name">Placement :</label>
-              <input class="input" type="text" placeholder="Enter placement" title="Enter placement" name="placement" value="<?php if(isset($_GET['error'])){echo $placement ;} else{ echo $work['placement'];}?>"/>
+              <input class="input" type="text" placeholder="Enter placement" title="Enter placement" id="placement" name="placement" value="<?php if(isset($_GET['error'])){echo $placement ;} else{ echo $work['placement'];}?>"/>
               <label class="label" for="name">Job estimation :</label>
-              <input class="input" type="text" placeholder="Enter job estimation" title="Enter job estimation" name="job_estimation" value="<?php if(isset($_GET['error'])){echo $job_estimation ;} else{ echo $work['job_estimation'];}?>"/>
+              <input class="input" type="text" placeholder="Enter job estimation" title="Enter job estimation" id="job_estimation" name="job_estimation" value="<?php if(isset($_GET['error'])){echo $job_estimation ;} else{ echo $work['job_estimation'];}?>"/>
               <label class="label" for="name">Details :</label>
-              <textarea class="input" placeholder="Enter Details" title="Enter Details" title="Enter Details" name="details"><?php if(isset($_GET['error'])){echo $details ;}else{ echo $work['details'];}?></textarea>
+              <textarea class="input" placeholder="Enter Details" title="Enter Details" title="Enter Details" id="details" name="details"><?php if(isset($_GET['error'])){echo $details ;}else{ echo $work['details'];}?></textarea>
               <input name="edit_work" class="button" type="submit" value="edit" />
             </form>
         </div>

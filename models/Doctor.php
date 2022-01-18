@@ -30,7 +30,8 @@ class Doctor extends DB{
                 $_SESSION['doctor'] = $result;    
                 $_SESSION['username'] = $result['name'];
                 $_SESSION['type'] ="doctor";
-            
+                unset($_SESSION['CAPTCHA_CODE']);
+
                 header('location: ../index.php' );
                 exit();
             } else {
@@ -91,6 +92,8 @@ class Doctor extends DB{
                         $_SESSION['doctor'] = $result;    
                         $_SESSION['username'] = $result['name'];
                         $_SESSION['type'] ="doctor";
+                        unset($_SESSION['CAPTCHA_CODE']);
+
                     header('location: ../index.php' );
                     exit();
                     }else{

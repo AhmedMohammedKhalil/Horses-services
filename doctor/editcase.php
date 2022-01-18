@@ -34,9 +34,12 @@
             </ol>
             <form method="POST" action="<?php echo $cont."Controller.php?do=updateCase"?>">
               <input type="hidden" name="case_id" value="<?php echo $case['id'];?>">
-              <input class="input" type="text" placeholder="Enter Title" name="title" value="<?php if(isset($_GET['error'])){echo $title ;} else{ echo $case['title'];}?>"/>
-              <textarea class="input" placeholder="Enter Details" name="details"><?php if(isset($_GET['error'])){echo $details ;}else{ echo $case['details'];}?></textarea>
-              <textarea class="input" placeholder="Enter Treatment" name="treatment"><?php if(isset($_GET['error'])){echo $treatment ;}else{ echo $case['treatment'];}?></textarea>
+              <label for="title">Title :</label>
+              <input class="input" type="text" placeholder="Enter Title" id="title" name="title" value="<?php if(isset($_GET['error'])){echo $title ;} else{ echo $case['title'];}?>"/>
+              <label for="details">Details :</label>
+              <textarea class="input" placeholder="Enter Details" id="details" name="details"><?php if(isset($_GET['error'])){echo $details ;}else{ echo $case['details'];}?></textarea>
+              <label for="treatment">Treatment :</label>
+              <textarea class="input" placeholder="Enter Treatment" id="treatment" name="treatment"><?php if(isset($_GET['error'])){echo $treatment ;}else{ echo $case['treatment'];}?></textarea>
               <input name="edit_case" class="button" type="submit" value="edit" />
             </form>
         </div>

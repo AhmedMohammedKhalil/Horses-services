@@ -15,6 +15,7 @@ class AdminController {
             if(isset($_POST['login'])) {
                 $email = trim($_POST['email']);
                 $password = trim($_POST['password']);
+                $captcha = trim($_POST['captcha']);
                 $data = [$email,$password];
                $encoded= json_encode(['email'=>$email]);
                 if (empty($email)) {
@@ -27,11 +28,17 @@ class AdminController {
                 if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
                 } 
-                if(isset($emailError) || isset($passwordError)) 
+                if ($_SESSION['CAPTCHA_CODE'] != $captcha) {
+                    $captchaError="Captcha Not Matched";
+                } 
+                if(isset($emailError) || isset($passwordError) || isset($captchaError)) 
                 {
                     $error = json_encode([
                         'email_error'=> isset($emailError) ? $emailError : '',
-                        'password_error'=>isset($passwordError) ? $passwordError : ''
+                        'password_error'=>isset($passwordError) ? $passwordError : '',
+                        'captcha_error' => isset($captchaError) ? $captchaError : ''
+
+
                     ]);
                     header('Location: '.$adminroute."login.php?error={$error}&data={$encoded}");
                     exit();

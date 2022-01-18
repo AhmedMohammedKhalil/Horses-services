@@ -27,7 +27,7 @@ class Trainer extends DB{
                 $_SESSION['trainer'] = $result;    
                 $_SESSION['username'] = $result['name'];
                 $_SESSION['type'] ="trainer";
-            
+                unset($_SESSION['CAPTCHA_CODE']);
                 header('location: ../index.php' );
                 exit();
             } else {
@@ -88,6 +88,8 @@ class Trainer extends DB{
                         $_SESSION['trainer'] = $result;    
                         $_SESSION['username'] = $result['name'];
                         $_SESSION['type'] ="trainer";
+                        unset($_SESSION['CAPTCHA_CODE']);
+
                     header('location: ../index.php' );
                     exit();
                     }else{

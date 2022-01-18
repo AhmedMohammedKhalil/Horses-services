@@ -13,9 +13,9 @@
       <div class="details">
         <div class="content">
             <?php if($doctor['photo']  == null ) {?>
-              <img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="" >
+              <img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="doctor photo" >
             <?php }else{ ?>
-              <img src="<?php echo $files.'doctors/'.$doctor['id'].'/'.$doctor['photo']?>" alt="">
+              <img src="<?php echo $files.'doctors/'.$doctor['id'].'/'.$doctor['photo']?>" alt="doctor photo">
             <?php }?> 
                
             <h2><?php echo $doctor['name'] ?></h2>
@@ -32,7 +32,7 @@
         <div class="info">
           <?php foreach($cases as $c)  { ?>
           <div class="box">
-            <img src="<?php echo $imgs.'doctor-image.jpg' ?>" alt="" />
+            <img src="<?php echo $imgs.'doctor-image.jpg' ?>" alt="case photo" />
             <div class="text">
               <h3><?php echo $c['title'] ?></h3>
               <p>

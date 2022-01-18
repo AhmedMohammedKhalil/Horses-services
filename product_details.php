@@ -11,9 +11,9 @@
     <div class="component-details" id="product">
       <div class="details">
             <?php if($product['photo']  == null ) {?>
-              <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="" >
+              <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="product photo" >
             <?php }else{ ?>
-              <img src="<?php echo $files.'products/'.$product['id'].'/'.$product['photo']?>" alt="">
+              <img src="<?php echo $files.'products/'.$product['id'].'/'.$product['photo']?>" alt="product photo">
             <?php }?>        
             <div class="content">
               <h2><?php echo $product['name'] ?></h2>
@@ -55,9 +55,9 @@
           <?php foreach($reviews as $r)  { ?>
           <div class="box">
               <?php if($r['user_photo']  == null ) {?>
-                <img src="<?php echo $imgs.'user-image.jpg'?>" alt="" >
+                <img src="<?php echo $imgs.'user-image.jpg'?>" alt="user photo" >
               <?php }else{ ?>
-                <img src="<?php echo $files.'users/'.$r['user_id'].'/'.$r['user_photo']?>" alt="">
+                <img src="<?php echo $files.'users/'.$r['user_id'].'/'.$r['user_photo']?>" alt="user photo">
               <?php }?>            
             <div class="text">
               <h3><?php echo $r['user_name'] ?></h3>

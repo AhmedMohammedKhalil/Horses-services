@@ -30,7 +30,8 @@ class Admin extends DB{
                 $_SESSION['admin'] = $result;    
                 $_SESSION['username'] = $result['name'];
                 $_SESSION['type'] ="admin";
-            
+                unset($_SESSION['CAPTCHA_CODE']);
+
                 header('location: ../index.php' );
                 exit();
             } else {

@@ -20,6 +20,7 @@ class UserController {
             if(isset($_POST['login'])) {
                 $email = trim($_POST['email']);
                 $password = trim($_POST['password']);
+                $captcha = trim($_POST['captcha']);
                 $data = [$email,$password];
                 $encoded= json_encode(['email'=>$email]);
                 if(empty($email)) {
@@ -30,12 +31,17 @@ class UserController {
                 } 
                 if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
+                }
+                if ($_SESSION['CAPTCHA_CODE'] != $captcha) {
+                    $captchaError="Captcha Not Matched";
                 } 
-                if(isset($emailError) || isset($passwordError)) 
+                if(isset($emailError) || isset($passwordError) || isset($captchaError)) 
                 {
                     $error = json_encode([
                         'email_error'=> isset($emailError) ? $emailError : '',
-                        'password_error' => isset($passwordError) ? $passwordError : ''
+                        'password_error' => isset($passwordError) ? $passwordError : '',
+                        'captcha_error' => isset($captchaError) ? $captchaError : ''
+
                     ]);                    
                     header('Location: '.$userroute."login.php?error={$error}&data={$encoded}");
                     exit();
@@ -68,7 +74,7 @@ class UserController {
                 $address = trim($_POST['address']);
                 $password = $_POST['password'];
                 $confirm_password = $_POST['confirm_password'];
-                
+                $captcha = trim($_POST['captcha']);
                 $encoded= json_encode(['email'=>$email ,'name'=>$name,'address'=>$address ,'phone'=>$phone]);
                 $error = [];
                 if (empty($name)) {
@@ -105,6 +111,9 @@ class UserController {
                 if ($password!=$confirm_password) {
                     array_push($error,"passwords not matched");
                 } 
+                if ($_SESSION['CAPTCHA_CODE'] != $captcha) {
+                    array_push($error,"Captcha Not Matched");
+                }
                 if(!empty($error))
                 {
                     $error=json_encode($error);

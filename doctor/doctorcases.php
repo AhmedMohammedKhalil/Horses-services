@@ -27,7 +27,7 @@
         <div class="info" style="min-height:180px">
           <?php foreach($cases as $c)  { ?>
               <div class="box">
-                <img src="<?php echo $imgs?>doctor-image.jpg" alt="doctor case" />
+                <img src="<?php echo $imgs?>doctor-image.jpg" alt="case photo" />
                 <div class="text" style="flex: 1;">
                   <h3><?php echo $c['title'] ?></h3>
                   <p>

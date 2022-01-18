@@ -30,9 +30,9 @@
         <div class="box" style="text-align: center;">
             <div class="image">
                 <?php if($p['photo']  == null ) {?>
-                <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="" >
+                <img src="<?php echo $imgs.'prod-1.jpg'?>" alt="product photo" >
                 <?php }else{ ?>
-                <img src="<?php echo $files.'products/'.$p['id'].'/'.$p['photo']?>" alt="">
+                <img src="<?php echo $files.'products/'.$p['id'].'/'.$p['photo']?>" alt="product photo">
                 <?php }?>
             </div>
             <h4><?php echo $p['name'] ?></h4>

@@ -20,6 +20,7 @@ class TrainerController {
                 $email = trim($_POST['email']);
                 $password = trim($_POST['password']);
                 $data = [$email,$password];
+                $captcha = trim($_POST['captcha']);
                 $encoded= json_encode(['email'=>$email]);
                 if (empty($email)) {
                     $emailError="email required";
@@ -30,11 +31,17 @@ class TrainerController {
                 if (strlen($password)>0 && strlen($password)<8) {
                     $passwordError="password must be greater than 8 digit";
                 } 
-                if(isset($emailError) || isset($passwordError)) 
+                if ($_SESSION['CAPTCHA_CODE'] != $captcha) {
+                    $captchaError="Captcha Not Matched";
+                } 
+                if(isset($emailError) || isset($passwordError) || isset($captchaError)) 
                 {
                     $error = json_encode([
                         'email_error'=> isset($emailError) ? $emailError : '',
-                        'password_error'=>isset($passwordError) ? $passwordError : ''
+                        'password_error'=>isset($passwordError) ? $passwordError : '',
+                        'captcha_error' => isset($captchaError) ? $captchaError : ''
+
+
                     ]);
                     header('Location: '.$trainerroute."login.php?error={$error}&data={$encoded}");
                     exit();
@@ -69,6 +76,7 @@ class TrainerController {
                 $description = trim($_POST['description']);
                 $password = trim($_POST['password']);
                 $confirm_password = trim($_POST['confirm_password']);
+                $captcha = trim($_POST['captcha']);
                 $encoded= json_encode(['email'=>$email ,'name'=>$name,'specialization'=>$specialization ,'phone'=>$phone , 'address'=>$address,'description'=>$description]);
                 $error=[];
                 if (empty($name)) {
@@ -111,6 +119,9 @@ class TrainerController {
                 if (empty($description)) {
                     array_push($error,"description required");
                 } 
+                if ($_SESSION['CAPTCHA_CODE'] != $captcha) {
+                    array_push($error,"Captcha Not Matched");
+                }
                 if(!empty($error))
                 {
                     $error=json_encode($error);

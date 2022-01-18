@@ -10,9 +10,9 @@
 <div class="component-details" >
       <div class="details">
 	  <?php if($_SESSION['user']['photo']  == null) {?>
-			<img src="<?php echo $imgs.'user-image.jpg'?>" alt="" >
+			<img src="<?php echo $imgs.'user-image.jpg'?>" alt="user photo" >
 		<?php }else{ ?>
-			<img src="<?php echo $files.'users/'.$_SESSION['user']['id'].'/'.$_SESSION['user']['photo'] ?>" alt="">
+			<img src="<?php echo $files.'users/'.$_SESSION['user']['id'].'/'.$_SESSION['user']['photo'] ?>" alt="user photo">
 		<?php }?>
           <div class="content">
               <h2><?php echo $_SESSION['user']['name'] ?></h2>

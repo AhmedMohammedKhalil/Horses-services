@@ -17,17 +17,17 @@
         <div class="content">
             <h2>Settings</h2>
             <?php if(isset($errors)) {
-										echo '<ul style="width:50%;margin:0 auto">';
-										foreach($errors as $er) {
-											echo "<li style='color:red;text-align:left'>$er</li>";
-										}
-										echo '</ul>';
-						}?>
+				echo '<ul style="width:50%;margin:0 auto">';
+				foreach($errors as $er) {
+					echo "<li style='color:red;text-align:left'>$er</li>";
+				}
+				echo '</ul>';
+			}?>
             <form name="admin_edit" method="POST" action="<?php echo $cont."Controller.php?do=editAdmin" ?>">
 			<label class="label" for="name">Name :</label>
-            <input class="input" type="text" placeholder="Your Name" title="Enter Name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
+            <input class="input" type="text" placeholder="Your Name" id="name" title="Enter Name" name="name" require  value="<?php if(isset($errors)) {echo $data['name']; } else { echo $_SESSION['username'];}?>"/>
 			<label class="label" for="email">Email :</label>
-            <input class="input" type="email" placeholder="Your Email" title="Enter Email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['admin']['email'];}?>" />
+            <input class="input" type="email" placeholder="Your Email" id="email" title="Enter Email" name="email" value="<?php if(isset($errors)) {echo $data['email']; } else { echo $_SESSION['admin']['email'];}?>" />
               <?php if(isset($_GET['error']) && isset($email_error))
               {
                   echo "<span style='color:red'>".ucwords($email_error) ."</span>";

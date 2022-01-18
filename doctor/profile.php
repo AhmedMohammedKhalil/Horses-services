@@ -11,9 +11,9 @@
 <div class="component-details" >
       <div class="details">
 	  <?php if($_SESSION['doctor']['photo']  == null) {?>
-			<img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="" >
+			<img src="<?php echo $imgs.'doctor-image.jpg'?>" alt="doctor photo" >
 		<?php }else{ ?>
-			<img src="<?php echo $files.'doctors/'.$_SESSION['doctor']['id'].'/'.$_SESSION['doctor']['photo'] ?>" alt="">
+			<img src="<?php echo $files.'doctors/'.$_SESSION['doctor']['id'].'/'.$_SESSION['doctor']['photo'] ?>" alt="doctor photo">
 		<?php }?>
           <div class="content">
               <h2><?php echo $_SESSION['doctor']['name'] ?></h2>
