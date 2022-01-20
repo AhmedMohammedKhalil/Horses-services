@@ -10,7 +10,9 @@
 	if(isset($_GET['case']))
 	{
 		$case = json_decode($_GET['case'],JSON_OBJECT_AS_ARRAY);
-	}
+	}else {
+    header("location: {$app}");
+  }
   if(isset($_GET['error']))
 	{
 		$errors = json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);

@@ -94,7 +94,7 @@
             </div>
             <h4><?php echo $p['name'] ?></h4>
             <h4><?php echo $p['price'] ?></h4>
-            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showProduct&id='.$t['id'].'">Read more</a>' ?>
+            <?php   echo '<a class="button" href="'.$cont.'Controller.php?do=showProduct&id='.$p['id'].'">Read more</a>' ?>
           </div>
           <?php }?>
         </div>

@@ -165,7 +165,7 @@ CREATE TABLE `trainers` (
 
 INSERT INTO `trainers` (`id`, `name`, `description`, `address`, `email`, `phone`, `password`, `photo`, `specialization`) VALUES
 (1, 'ahmed', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut, sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat.\r\n', 'address', 'amk@gmail.com', '695324', '$2y$10$fSVZgvFr/4dsG8zXFACzxeSRxP9G/lAKkynIc9bFKN8U3TX/3E2Ca', NULL, 'horses'),
-(2, 'Paul Wiley', 'Incidunt reprehende', 'Quod sit ipsum imped', 'adam@yahoo.com', '695321', '$2y$10$/MdqpBLfLgoBlTTAod1PSu/TXhJM6ZD2gco3rrTlmJyJo0/8DucuK', '9.jpg', 'Dolorem in cupidatat');
+(2, 'Paul Wiley', 'Incidunt reprehende', 'Quod sit ipsum imped', 'adam@yahoo.com', '695321', '$2y$10$/MdqpBLfLgoBlTTAod1PSu/TXhJM6ZD2gco3rrTlmJyJo0/8DucuK', '6.jpg', 'Dolorem in cupidatat');
 
 -- --------------------------------------------------------
 

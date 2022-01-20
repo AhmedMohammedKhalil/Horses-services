@@ -8,7 +8,7 @@
 	$headerTitle = 'Admin Profile';
 	include $inc.'header.php';
 ?>
-<div class="component-details" >
+<div class="component-details" style="min-height:67.3vh">
       <div class="details">
           <div class="content">
               <h2><?php echo $_SESSION['admin']['name'] ?></h2>

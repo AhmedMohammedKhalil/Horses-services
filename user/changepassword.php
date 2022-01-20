@@ -1,6 +1,7 @@
 <?php
 	ob_start();
 	session_start();
+  $valid = "true";
 	$pageTitle = 'Change Password';
 	include 'init.php';
 	$headerTitle = 'Change Password';

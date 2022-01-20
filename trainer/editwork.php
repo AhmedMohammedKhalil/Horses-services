@@ -10,7 +10,9 @@
 	if(isset($_GET['work']))
 	{
 		$work = json_decode($_GET['work'],JSON_OBJECT_AS_ARRAY);
-	}
+	}else {
+    header("location: {$app}");
+  }
   if(isset($_GET['error']))
 	{
 		$errors = json_decode($_GET['error'],JSON_OBJECT_AS_ARRAY);

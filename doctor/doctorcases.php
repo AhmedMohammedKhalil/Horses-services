@@ -11,7 +11,9 @@
 	{
 		$data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
 		extract($data);
-	}
+	}else {
+    header("location: {$app}");
+  }
 ?>
    <div class="boxes" id="cases">
       <div  style="display: flex;">

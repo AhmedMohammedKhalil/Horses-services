@@ -10,7 +10,9 @@
 	if(isset($_GET['doctors']))
 	{
 		$doctors = json_decode($_GET['doctors'],JSON_OBJECT_AS_ARRAY);
-	}
+	}else {
+    header("location: {$app}");
+  }
 ?>
 <div style="min-height: calc(100vh - 193.4px);">
       <h1 style="text-align: center;margin:0;padding:30px">All Doctors</h1>

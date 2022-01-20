@@ -4,9 +4,15 @@
     include('init.php');
     $pageTitle = "Trainer Details";
     include($inc.'header.php');
-    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
-    extract($data);
-    $trainer=$trainer[0];
+    
+    if(isset($_GET['data'])) {
+      $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+      extract($data);
+      $trainer=$trainer[0];
+    } else {
+      header('location: '.$app);
+    }
+    
 ?>
     <div class="component-details" id="trainer">
       <div class="details">

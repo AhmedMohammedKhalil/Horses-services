@@ -4,10 +4,14 @@
     include('init.php');
     $pageTitle = "Doctor Details";
     include($inc.'header.php');
-    include_once('controllers/HomeController.php');
-    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
-    extract($data);
-    $doctor=$doctor[0];
+    if(isset($_GET['data'])) {
+      $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+      extract($data);
+      $doctor=$doctor[0];
+    } else {
+      header('location: '.$app);
+    }
+    
 ?>
     <div class="component-details" id="doctor">
       <div class="details">

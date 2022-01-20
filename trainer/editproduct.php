@@ -17,7 +17,9 @@
 	{
 		$product = json_decode($_GET['product'],JSON_OBJECT_AS_ARRAY);
     $product=$product[0];
-	}
+	} else {
+    header("location: {$app}");
+  }
 
 ?>
    <div class="login-register" id="register">

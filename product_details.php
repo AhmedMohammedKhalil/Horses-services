@@ -4,9 +4,14 @@
     include('init.php');
     $pageTitle = "Product Details";
     include($inc.'header.php');
-    $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
-    extract($data);
-    $product=$product[0];
+    if(isset($_GET['data'])) {
+      $data = json_decode($_GET['data'],JSON_OBJECT_AS_ARRAY);
+      extract($data);
+      $product=$product[0];
+    } else {
+      header('location: '.$app);
+    }
+   
 ?>
     <div class="component-details" id="product">
       <div class="details">
